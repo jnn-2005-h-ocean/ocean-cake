@@ -10,11 +10,11 @@ devise_scope :admins do
 		get 'admins/sign_out' => 'admins/sessions#destroy'
 end
 
-devise_for :users, controllers: {
-  sessions:      'users/sessions',
-  passwords:     'users/passwords',
-  registrations: 'users/registrations'
-}
+	devise_for :customers, controllers: {
+  	sessions:      'customers/sessions',
+  	passwords:     'customers/passwords',
+  	registrations: 'customers/registrations'
+	}
 
 devise_scope :customers do
 		get 'customers/sign_in' => 'customers/sessions#create'
