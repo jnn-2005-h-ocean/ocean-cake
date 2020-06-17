@@ -46,7 +46,7 @@ Rails.application.routes.draw do
 		resources :customers, only:[:show, :edit, :update]do
 			member do
 				get :delete, as: :delete
-				patch :delete, as: :delete
+				patch :delete, as: :update
 			end
 			resources :orders, only:[:new, :create]do
 				member do
