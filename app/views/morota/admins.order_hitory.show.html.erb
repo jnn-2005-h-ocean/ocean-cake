@@ -1,0 +1,80 @@
+<!-- ここは管理者側の注文履歴詳細画面です -->
+
+
+<h3>注文履歴詳細</h3>
+
+<table class="detail_table">
+  <tr>
+    <th>購入者</th>
+    <td>山田花子</td>
+  </tr>
+  <tr>
+    <th>配送先</th>
+    <td>〒150-0041 東京都渋谷区神南１丁目１９−１１ パークウェースクエア2 4階　山田花子</td>
+  </tr>
+  <tr>
+    <th>支払い方法</th>
+    <td>銀行振り込み</td>
+  </tr>
+
+  <tr>
+    <th>注文ステータス</th>
+    <td>
+      <select name=”status”>
+        <option value=”0”>入金待ち</option>
+        <option value=”1”>入金確認</option>
+        <option value=”2”>制作中</option>
+        <option value=”3”>発送準備中</option>
+        <option value=”4”>発送済み</option>
+      </select>
+      <button type="button" class="btn btn-primary">更新</button>
+    </td>
+  </tr>
+</table>
+
+<table>
+  <tbody>
+    <tr>
+      <th>商品名</th>
+      <th>単価（税込み）</th>
+      <th>数量</th>
+      <th>小計</th>
+      <th>制作ステータス</th>
+    </tr>
+
+    <tr>
+      <td>洋梨のチーズタルト</td>
+      <td>1,200</td>
+      <td>1</td>
+      <td>1,200</td>
+      <td>
+        <select name=”production-status”>
+          <option value=”0”>着手不可</option>
+          <option value=”1”>制作待ち</option>
+          <option value=”2”>製作中</option>
+          <option value=”3”>制作完了</option>
+        </select>
+        <button type="button" class="btn btn-primary">更新</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <tbody>
+    <tr>
+      <th>商品合計</th>
+      <td>7,150</td>
+    </tr>
+
+    <tr>
+      <th>送料</th>
+      <td>800</td>
+    </tr>
+
+    <tr>
+      <th>請求金額合計</th>
+      <td>7,950</td>
+    </tr>
+  </tbody>
+</table>
