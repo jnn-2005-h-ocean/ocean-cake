@@ -31,7 +31,7 @@ Rails.application.routes.draw do
 		resources :products
 		resources :orders, only: [:index, :show, :update]
 		resources :order_items, only: [:update]
-		resources :genres, only: [:index, :create, :edit, :update]
+		resources :genres, only: [:index, :create, :edit, :update, :destroy]
 		root 'homes#top'
 	end
 
@@ -42,11 +42,11 @@ Rails.application.routes.draw do
 # order_itemsは？
 # serchはどうするか?
 
-
+	namespace :customers do
 		resources :customers, only:[:show, :edit, :update]do
 			member do
 				get :delete, as: :delete
-				patch :delete, as: :update
+				patch :delete, as: :active
 			end
 			resources :orders, only:[:new, :create]do
 				member do
@@ -63,9 +63,12 @@ Rails.application.routes.draw do
 
 		resources :products, only: [:index, :show]
 
+		# serchはどうするか?
+
 
 		root 'homes#top'
 
+	end
 
 
 

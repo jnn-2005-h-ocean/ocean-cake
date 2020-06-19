@@ -1,5 +1,4 @@
-class Admins::GenresController < ApplicationController
-
+class Customers::ShippingAddressesController < ApplicationController
 	def index
 	end
 
