@@ -33,14 +33,14 @@ class DeviseCreateCustomers < ActiveRecord::Migration[5.2]
       # t.datetime :locked_at
 
 
-      t.string :family_name
-      t.string :first_name
-      t.string :family_name_kana
-      t.string :first_name_kana
-      t.string :postal_code
-      t.string :address
-      t.string :telephone_number
-      t.boolean :is_withdrawal, default: false
+      t.string :family_name, null: false
+      t.string :first_name, null: false
+      t.string :family_name_kana, null: false
+      t.string :first_name_kana, null: false
+      t.string :postal_code, null: false
+      t.string :address, null: false
+      t.string :telephone_number, null: false
+      t.boolean :is_withdrawal, default: false, null: false
 
 
       t.timestamps null: false
