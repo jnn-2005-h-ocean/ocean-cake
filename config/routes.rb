@@ -35,9 +35,6 @@ Rails.application.routes.draw do
 		root 'homes#top'
 	end
 
-
-
-# pacthのdeleteをどうするか？
 # orderのupdate
 # order_itemsは？
 # serchはどうするか?

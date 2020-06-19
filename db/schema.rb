@@ -13,10 +13,10 @@
 ActiveRecord::Schema.define(version: 2020_06_18_015511) do
 
   create_table "addresses", force: :cascade do |t|
-    t.integer "customer_id"
-    t.string "shipping_name"
-    t.string "shipping_postal_code"
-    t.string "shipping_address"
+    t.integer "customer_id", null: false
+    t.string "shipping_name", null: false
+    t.string "shipping_postal_code", null: false
+    t.string "shipping_address", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -34,9 +34,9 @@ ActiveRecord::Schema.define(version: 2020_06_18_015511) do
   end
 
   create_table "cart_items", force: :cascade do |t|
-    t.integer "customer_id"
-    t.integer "product_id"
-    t.integer "number"
+    t.integer "customer_id", null: false
+    t.integer "product_id", null: false
+    t.integer "number", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -47,14 +47,14 @@ ActiveRecord::Schema.define(version: 2020_06_18_015511) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.string "family_name"
-    t.string "first_name"
-    t.string "family_name_kana"
-    t.string "first_name_kana"
-    t.string "postal_code"
-    t.string "address"
-    t.string "telephone_number"
-    t.boolean "is_withdrawal", default: false
+    t.string "family_name", null: false
+    t.string "first_name", null: false
+    t.string "family_name_kana", null: false
+    t.string "first_name_kana", null: false
+    t.string "postal_code", null: false
+    t.string "address", null: false
+    t.string "telephone_number", null: false
+    t.boolean "is_withdrawal", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_customers_on_email", unique: true
@@ -62,42 +62,42 @@ ActiveRecord::Schema.define(version: 2020_06_18_015511) do
   end
 
   create_table "genres", force: :cascade do |t|
-    t.string "name"
-    t.boolean "is_active", default: true
+    t.string "name", null: false
+    t.boolean "is_active", default: true, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "order_items", force: :cascade do |t|
-    t.integer "order_id"
-    t.integer "product_id"
-    t.integer "number"
-    t.integer "purchase_price"
-    t.integer "making_status", default: 0
+    t.integer "order_id", null: false
+    t.integer "product_id", null: false
+    t.integer "number", null: false
+    t.integer "purchase_price", null: false
+    t.integer "making_status", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "orders", force: :cascade do |t|
-    t.integer "customer_id"
-    t.string "shipping_name"
-    t.string "shipping_postal_code"
-    t.string "shipping_address"
-    t.integer "payment_method"
-    t.integer "shipping_fee", default: 800
-    t.integer "total_fee"
-    t.integer "order_status", default: 0
+    t.integer "customer_id", null: false
+    t.string "shipping_name", null: false
+    t.string "shipping_postal_code", null: false
+    t.string "shipping_address", null: false
+    t.integer "payment_method", null: false
+    t.integer "shipping_fee", default: 800, null: false
+    t.integer "total_fee", null: false
+    t.integer "order_status", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "products", force: :cascade do |t|
-    t.string "name"
-    t.integer "genre_id"
-    t.string "image_id"
-    t.text "description"
-    t.integer "unit_price"
-    t.boolean "is_selling", default: true
+    t.string "name", null: false
+    t.integer "genre_id", null: false
+    t.string "image_id", null: false
+    t.text "description", null: false
+    t.integer "unit_price", null: false
+    t.boolean "is_selling", default: true, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
