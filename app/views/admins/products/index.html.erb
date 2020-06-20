@@ -1,0 +1,46 @@
+
+<div class="container">
+  <div class="row">
+
+    <div class="col-md-9">
+      <div style="margin: 0px 0px 30px 23px;">
+        <mark style="font-size: 20px;">商品一覧</mark>
+      </div>
+    </div>
+
+    <table class="table">
+
+      <thead>
+        <tr class="active">
+          <th style="width:10%">商品ID</th>
+          <th style="width:30%">商品名</th>
+          <th style="width:15%">税抜価格</th>
+          <th style="width:30%">ジャンル</th>
+          <th style="width:15%">ステータス</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @products.each do |product| %>
+
+        <tr>
+          <td><%= product.id %></td>
+          <td><%= product.name %></td>
+          <td><%= product.unit_price %></td>
+          <td><%= product.genre.name %></td>
+          <td><%= product.is_selling %></td>
+        </tr>
+
+        <% end %>
+
+      </tbody>
+
+    </table>
+
+
+  </div>
+</div>
+
+
+
+
