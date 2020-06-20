@@ -6,10 +6,15 @@ class Admins::ProductsController < ApplicationController
 
 	def create
 		@product = Product.new(product_params)
-	end
+		if @product.save
+			redirect_to admins_products_path(@product.id), notice: "successfully created book!"
+		else
+  			render 'new'
+  		end
+  	end
 
 	def index
-		@product = product.all
+		@products = Product.all
 	end
 
 	def show
@@ -38,7 +43,7 @@ class Admins::ProductsController < ApplicationController
 	private
 
 	def product_params
-		params.require(:product).permit(:name, :description, :unit_price)
+		params.require(:product).permit(:name, :genre_id, :image_id, :description, :unit_price, :is_selling)
 	end
 
 end

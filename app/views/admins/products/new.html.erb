@@ -13,7 +13,7 @@
         		<div class="image-box">
           			<%= f.label "画像の登録" %>
         		</div>
-        			<%= f.file_field :image, style:"margin-left:80px" %>
+        			<%= f.file_field :image_id, style:"margin-left:80px" %>
       		</div>
     	</div>
 
@@ -32,7 +32,7 @@
       	<!-- genreを選択機能 未実装 -->
       	<div class="field form-group">
         	<%= f.label :genre, "ジャンル" %><br>
-        	<%= f.collection_select(:genre_id, Genre.all, :id, :genre_name,:prompt => "選択してください") %>
+        	<%= f.collection_select(:genre_id, Genre.all, :id, :name,:prompt => "選択してください") %>
       	</div>
 
       	<div class="field form-group">
