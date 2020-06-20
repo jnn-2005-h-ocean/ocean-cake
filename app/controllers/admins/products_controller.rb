@@ -25,12 +25,20 @@ class Admins::ProductsController < ApplicationController
 		if @product.update(product_params)
 			redirect_to @product, notice: "successfully updated product"
 		else
-			render
+			render :edit
 		end
 	end
 
-
 	def destroy
+		@product = Product.find(params[:id])
+		@product.destroy
+		redirect_to admins_products
+	end
+
+	private
+
+	def product_params
+		params.require(:product).permit(:name, :description, :unit_price)
 	end
 
 end
