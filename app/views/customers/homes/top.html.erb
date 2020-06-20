@@ -1,0 +1,47 @@
+<!-- 新　左側　ジャンル検索欄 -->
+<div class="container">
+	<div class="row">
+		<div class="col-lg-4">
+			<ul class="genre-group">
+				<li class="genre-group-item">ジャンル検索</li>
+				<% @genres.each do |genre| %>
+				<% end %>
+			</ul>
+		</div>
+
+		<!-- 新　右側　サイトの紹介 -->
+
+		<div class="col-lg-8">
+			<div class="box1">
+				<img src="#" alt="写真" width="760" height="410">
+				<p>ようこそ、NaganoCakeへ！<br>
+					このサイトは、ケーキ販売のECサイトになります。<br>
+					会員の方も商品の閲覧はできますが、<br>
+					購入には会員登録が必要になります。
+				</p>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-xs-12">
+			<%= image_tag 'recommend.png', :size =>'520x170'  %>
+		</div>
+	</div>
+
+	<!-- 新　右下のオススメ欄 -->
+
+	<div class="row">
+		<% @products.first(4).each do |product| %> <!-- firstをつけると配列に対して回数を指定することができる -->
+		<div class="col-xs-3">
+			<div class="thumbnail">
+				<%= attachment_image_tag product, :product_image, :fill, 300, 200, fallback: "no_image.png", size:'300x200', style:"width:100%" %>
+				<div class="caption">
+					<% link_to %>
+					<p><%= product.product_description%></p>
+				</div>
+			</div>
+		</div>
+		<% end %>
+	</div>
+</div>
