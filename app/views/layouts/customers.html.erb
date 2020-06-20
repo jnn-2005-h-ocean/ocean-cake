@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>ocean_cake</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+
+  <body>
+    <!--ヘッダーの記述-->
+    <header class="navbar navbar-fixed-top navbar-inverse">
+      <div class="container">
+
+        <nav class="nav navbar-nav navbar-left">
+          <span>LOGO</span>
+        </nav>
+        <nav>
+          <ul class="nav navbar-nav navbar-right">
+            <!--if文でサインインとアウト時の表示を変更-->
+            <% if user_signed_in? %>
+              <li class="">ようこそ、xxxさん!</li>
+              <li class="">マイページ</li>
+              <li class="">商品一覧</li>
+              <li class="">カート</li>
+              <li class="">ログアウト</li>
+
+            <% else %>
+
+              <li class="">商品一覧</li>
+              <li class="">新規登録</li>
+              <li class="">ログイン</li>
+              <li><%= link_to ' home', root_path %></li>
+
+            <% end %>
+          </ul>
+        </nav>
+
+      </div>
+    </header>
+    <!--ヘッダーの記述-->
+
+
+    <div class="container">
+      <p id="notice"><%= notice %></p> <!--デバイスでnotice設定されているので呼び出してるだけ-->
+        <%= yield %>
+    </div>
+
+    <footer class="navbar navbar-fixed-bottom navbar-inverse">
+
+    </footer>
+
+  </body>
+
+</html>
