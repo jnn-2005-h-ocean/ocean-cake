@@ -1,5 +1,5 @@
 class Customers::CustomersController < ApplicationController
-
+  layout 'customers'
   before_action :authenticate_customer!
   before_action :active_customer?
   before_action :correct_customer?

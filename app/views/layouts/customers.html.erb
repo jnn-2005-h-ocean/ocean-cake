@@ -23,18 +23,17 @@
           <ul class="nav navbar-nav navbar-right">
             <!--if文でサインインとアウト時の表示を変更-->
             <% if customer_signed_in? %>
-              <li class="">ようこそ、xxxさん!</li>
-              <li class="">マイページ</li>
-              <li class="">商品一覧</li>
-              <li class="">カート</li>
-              <li class="">ログアウト</li>
+              <li class="">ようこそ、<%= current_customer.family_name %>さん!</li>
+              <li class=""><%= link_to "マイページ", customers_customer_path(current_customer.id) %></li>
+              <li class=""><%= link_to "商品一覧", customers_products_path %></li>
+              <li class=""><%= link_to "カート", customers_customer_cart_items_path(current_customer.id) %></li>
+              <li class=""><%= link_to "ログアウト",destroy_customer_session_path, method: :delete %></li>
 
             <% else %>
 
-              <li class="">商品一覧</li>
-              <li class="">新規登録</li>
-              <li class="">ログイン</li>
-              <li><%= link_to ' home', root_path %></li>
+              <li class=""><%= link_to "商品一覧", customers_products_path %></li>
+              <li class=""><%= link_to "新規登録", new_customer_registration_path %></li>
+              <li class=""><%= link_to "ログイン", new_customer_session_path %></li>
 
             <% end %>
           </ul>

@@ -1,5 +1,5 @@
 class Customers::OrdersController < ApplicationController
-
+	layout 'customers'
 	def new
 	end
 

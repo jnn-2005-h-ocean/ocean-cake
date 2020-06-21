@@ -1,5 +1,5 @@
 class Customers::ProductsController < ApplicationController
-
+	layout 'customers'
 	def index
 	end
 
