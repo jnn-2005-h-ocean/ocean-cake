@@ -1,22 +1,82 @@
-<!-- ここは管理者側の会員情報の編集画面です -->
+<<div class="edit-title">
+  <mark style="font-size: 20px;">
+    <%= @custmer.last_name %>
+    <%= @custmer.first_name %>
+    さんの会員情報編集
+  </mark>
+</div>
+
+<div class="row">
+  <div class="col-xs-8 col-xs-offset-2">
+
+    <%= form_for @custmer, url: admins_custmer_path do |f| %>
+<!--     <%= render "layouts/error_message", title: @custmer %>
+ -->    <table border="0">
+      <tr>
+      <th>会員ID</th>
+      <td>
+        <%= @custmer.id %>
+      </td>
+      </tr>
 
 
-<h3>customer_nameさんの会員情報</h3>
+    <tr>
+      <th>氏名</th>
+      <td><%= f.text_field :last_name, class: "form-control" %></td>
+      <td>&nbsp;&nbsp;&nbsp;</td>
+      <td><%= f.text_field :first_name, class: "form-control" %></td>
+    </tr> 
 
-  <p>顧客ID</p>
-  <p>氏名</p><input type="text" name="name">
-  <input type="text" name="name">
+    <tr>
+      <th>フリガナ</th>
+      <td><%= f.text_field :kana_last_name, class: "form-control" %></td>
+      <td>&nbsp;&nbsp;&nbsp;</td>
+      <td><%= f.text_field :kana_first_name, class: "form-control" %></td>
+    </tr> 
 
-  <p>フリガナ</p><input type="text" name="name-kana">
-  <input type="text" name="name-kana">
+    <tr>
+      <th>郵便番号</th>
+      <td>
+        <%= f.text_field :postal_code, class: "form-control" %>
+      </td>
+    </tr> 
 
-  <p>郵便番号</p><input type="text" name="postal_code">
+    <tr>
+      <th>住所</th>
+      <td colspan="3">
+        <%= f.text_field :address, class: "form-control" %>
+      </td>
+    </tr> 
 
-  <p>住所</p><input type="text" name="address">
+    <tr>
+      <th>電話番号</th>
+      <td>
+        <%= f.text_field :phone_number, class: "form-control" %>
+      </td>
+    </tr> 
 
-  <p>電話番号</p><input type="text" name="telephone-number">
+    <tr>
+      <th>メールアドレス</th>
+      <td>
+        <%= f.text_field :email, class: "form-control" %>
+      </td>
+    </tr> 
 
-  <p>メールアドレス</p><input type="text" name="email"></p>
+    <tr>
+      <th>会員ステータス</th>
+      <td>
+        <label>
+        <%= f.radio_button :is_active, :true %>有効
+        </label>
+      <label>
+        <%= f.radio_button :is_active, :false %>退会済み
+      </label>
+      </td>
+    </tr> 
+    </table>
 
-  <button type="button" class="btn btn-primary">編集する</button>
-  <button type="button" class="btn btn-primary">注文履歴一覧を見る</button>
+  <%= f.submit('変更を保存する',class: 'btn btn-primary', style: 'margin: 10px 0px 20px 0px') %>
+  <% end %>
+  
+  </div>
+</div>
