@@ -1,5 +1,5 @@
 class Customers::CartItemsController < ApplicationController
-
+	layout 'customers'
 	def show
 	end
 
