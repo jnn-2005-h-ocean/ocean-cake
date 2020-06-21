@@ -28,9 +28,9 @@ class Admins::ProductsController < ApplicationController
 	def update
 		@product = Product.find(params[:id])
 		if @product.update(product_params)
-			redirect_to @product, notice: "successfully updated product"
+			redirect_to admins_product_path(@product.id), notice: "successfully updated product"
 		else
-			render :edit
+			render action: :edit
 		end
 	end
 
@@ -43,7 +43,7 @@ class Admins::ProductsController < ApplicationController
 	private
 
 	def product_params
-		params.require(:product).permit(:name, :genre_id, :image_id, :description, :unit_price, :is_selling)
+		params.require(:product).permit(:name, :genre_id, :image, :description, :unit_price, :is_selling)
 	end
 
 end
