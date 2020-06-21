@@ -3,34 +3,34 @@
 
 		<p style="font-size:20pt;">配送先登録/一覧</p>
 
-		<a>form_for(@shipping_address) do |f| </a>
+		<%= form_for @address, url:  customers_customer_addresses_path(current_customer) do |f| %>
 
 		<table class="table" id="none-border">
 
 			<tbody>
               	<tr>
-                	<td>f.label :届け先郵便番号</td>
-                	<td>f.text_field :shipping_postal_code</td>
+                	<td><%= f.label :届け先郵便番号 %></td>
+                	<td><%= f.text_field :shipping_postal_code%></td>
               	</tr>
 
 				<tr>
-                	<td>f.label :届け先住所</td>
-                	<td>f.text_field :shipping_address</td>
+                	<td><%= f.label :届け先住所%></td>
+                	<td><%= f.text_field :shipping_address%></td>
               	</tr>
 
               	<tr>
-                	<td>f.label :届け先名</td>
-                	<td>f.text_field :shipping_name</td>
+                	<td><%= f.label :届け先名%></td>
+                	<td><%= f.text_field :shipping_name%></td>
               	</tr>
 
 
 				<tr>
-                	<td>f.submit "登録する",class: "btn btn-success"</td>
+                	<td><%= f.submit "登録する",class: "btn btn-success"%></td>
               	</tr>
             </tbody>
 		</table>
 
-		<a>end</a>
+		<% end %>
 
 
 		<table style="margin:10px" border="1">
@@ -46,21 +46,18 @@
 
 			<tbody>
 				<!-- 宛名データを受けとりテーブルで表示　-->
+				<% @addresses.each do |myaddress| %>
 				<tr>
-					<td><%= "000-0000"%></td>
-					<td><%= "住所１"%></td>
-					<td><%= "宛名１"%></td>
-					<td><button type="button" class="btn btn-primary">編集する</button>
-						<button type="button" class="btn btn-danger">削除する</button></td>
+					<td><%= myaddress.shipping_postal_code%></td>
+					<td><%= myaddress.shipping_address%></td>
+					<td><%= myaddress.shipping_name%></td>
+					<td><%= link_to "編集する",edit_customers_customer_address_path(myaddress.customer_id,myaddress.id), class: "btn-sm btn-success" %></td>
+					<td><%= link_to "削除する",customers_customer_address_path(myaddress.customer_id,myaddress.id), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger" %></td>
 				</tr>
-				<tr>
-					<td><%= "111-1111"%></td>
-					<td><%= "住所２"%></td>
-					<td><%= "宛名２"%></td>
-					<td><button type="button" class="btn btn-primary">編集する</button>
-						<button type="button" class="btn btn-danger">削除する</button></td>
 
-				</tr>
+				<% end %>
+
+
 			</tbody>
 		</table>
 
