@@ -23,10 +23,10 @@
           <ul class="nav navbar-nav navbar-right">
             <!--if文でサインインとアウト時の表示を変更-->
             <% if admin_signed_in? %>
-              <li class=""><%= link_to "", admins_products_path%>商品一覧</li>
-              <li class=""><%= link_to "", admins_customers_path%>会員一覧</li>
-              <li class=""><%= link_to "", admins_orders_path%>注文履歴一覧</li>
-              <li class=""><%= link_to "", admins_genres_path%>ジャンル一覧</li>
+              <li class=""><%= link_to "商品一覧", admins_products_path%></li>
+              <li class=""><%= link_to "会員一覧", admins_customers_path%></li>
+              <li class=""><%= link_to "注文履歴一覧", admins_orders_path%></li>
+              <li class=""><%= link_to "ジャンル一覧", admins_genres_path%></li>
               <li class=""><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
 
             <% else %>
