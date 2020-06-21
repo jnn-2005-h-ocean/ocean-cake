@@ -5,6 +5,7 @@
     <div class="col-md-9">
       <div style="margin: 0px 0px 30px 23px;">
         <mark style="font-size: 20px;">商品一覧</mark>
+        <%= link_to "追加＋ボタン探す", new_admins_product_path %>
       </div>
     </div>
 
@@ -25,10 +26,14 @@
 
         <tr>
           <td><%= product.id %></td>
-          <td><%= product.name %></td>
+          <td><%= link_to product.name, admins_product_path(product.id) %></td>
           <td><%= product.unit_price %></td>
           <td><%= product.genre.name %></td>
-          <td><%= product.is_selling %></td>
+          <%if product.is_selling == true %>
+              <td>有効</td>
+          <% else %>
+              <td>無効</td>
+          <% end %>
         </tr>
 
         <% end %>
