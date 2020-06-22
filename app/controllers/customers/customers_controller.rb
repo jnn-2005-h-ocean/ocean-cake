@@ -1,8 +1,8 @@
 class Customers::CustomersController < ApplicationController
   layout 'customers'
   before_action :authenticate_customer!
-  before_action :active_customer?
-  before_action :correct_customer?
+  # before_action :active_customer?
+  # before_action :correct_customer?
 
   def show
   	@customer = Customer.find(params[:id])
@@ -12,37 +12,38 @@ class Customers::CustomersController < ApplicationController
     @customer = Customer.find(params[:id])
   end
 
+
   def update
     @customer = Customer.find(params[:id])
     if @customer.update(customer_params)
-      redirect_to customer_path(@customer)
+      redirect_to customers_customer_path(current_customer.id)
     else
       render :edit
     end
   end
 
   def delete
-
+    @customer = Customer.find(params[:id])
   end
 
-  def destroy
+  def active
     @customer = Customer.find(params[:id])
-    @customer.update(is_active: false)
-    sign_out(current_customer)
-    redirect_to root_path
+    @customer = is_withdrawal = true
+
+    redirect_to
   end
 
   private
   def customer_params
     params.require(:customer).permit(
-      :last_name,
+      :family_name,
       :first_name,
-      :kana_last_name,
-      :kana_first_name,
+      :family_name_kana,
+      :first_namekana,
       :email, :postal_code,
       :address,
-      :phone_number, 
-      :is_active
+      :telephone_number,
+      :is_withdrawal
     )
   end
 end
