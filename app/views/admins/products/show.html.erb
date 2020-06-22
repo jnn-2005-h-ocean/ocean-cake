@@ -1,43 +1,49 @@
 
 
-<div class="container">
+
   <div class="row">
 
 
-    <h2>商品詳細</h2>
+    <h2>商品詳細画面</h2>
+      <div class="col-lg-4">
+        <%= attachment_image_tag @product, :image, :fill, 300, 200 %>
+      </div>
 
-      <%= attachment_image_tag @product, :image, :fill, 50, 50 %>
 
-
-        <div class="col-mb-8">
-          <div class="card-body">
-
-            <h5 class="card-title">商品名</h5>
-            <p class="product-name"><%= @product.name %></p>
-
-            <h5 class="card-title">商品説明</h5>
-            <p class="description"><%= @product.description %></p>
-
-            <h5 class="genre">ジャンル</h5>
-            <p class="genre-name"><%= @product.genre.name %></p>
-
-            <h5 class="price">税込価格（税抜き価格）</h5>
-            <p class="price"><%= @product.unit_price %></p>
-
-            <h5 class="sale-status">販売ステータス</h5>
-            <p class="status">
-              <%if @product.is_selling == true %>
-                <p>有効</p>
-              <% else %>
-                <p>無効</p>
-              <% end %>
-            </p>
-
-            <%= link_to "Edit",edit_admins_product_path, class: "btn-sm btn-success" %>
-
-          </div>
+        <div class="col-lg-6">
+          <table class="nonborder">
+            <tbody>
+              <tr>
+                <td>商品名</td>
+                <td><%= @product.name %></td>
+              </tr>
+              <tr>
+                <td>商品説明</td>
+                <td><%= @product.description %></td>
+              </tr>
+              <tr>
+                <td>ジャンル</td>
+                <td><%= @product.genre.name %></td>
+              </tr>
+              <tr>
+                <td>税込価格（税抜き価格）</td>
+                <td><%= @product.unit_price %></td>
+              </tr>
+              <tr>
+                <td>販売ステータス</td>
+                <td><%if @product.is_selling == true %>
+                      販売中
+                    <% else %>
+                      販売停止中
+                    <% end %></td>
+              </tr>
+            </tbody>
+          </table>
         </div>
+
+            <%= link_to "編集する",edit_admins_product_path, class: 'btn btn-info btn-lg col-lg-offset-12' %>
+
+  </div>
 
 
   </div>
-</div>

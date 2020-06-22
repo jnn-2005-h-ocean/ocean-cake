@@ -1,0 +1,57 @@
+
+<!-- -------------CSS-------------- -->
+
+<!-- .box3 {
+	height: 200px;
+	width: 200px;
+	border: 1px solid #000000;
+} -->
+
+<!-- -------------CSS-------------- -->
+
+
+
+<div class="row">
+
+
+	<div class="col-xs-3">
+
+		<ul class="list-group">
+			<% @genres.each do |genre| %>
+
+			<li class="list-group-item"><%= genre.name %></li>
+
+			<% end %>
+
+		</ul>
+
+	</div>
+
+
+
+	<div class="col-xs-4"><%= attachment_image_tag @product, :image, :fill, 350, 300 %></div>
+
+	<div class="col-xs-5">
+		<table class="noborder">
+			<tbody>
+
+				<tr style="font-size:15pt">
+					<td><%= @product.name %></td>
+				</tr>
+
+				<tr>
+					<td><%= @product.description %></td>
+				</tr>
+
+				<tr style="font-size:15pt">
+					<td>¥<%= @product.unit_price %></td>
+				</tr>
+
+
+			</tbody>
+		</table>
+	</div>
+		<a class="btn btn-success" role="button">カートに入れる（仮）</a>
+
+</div>
+
