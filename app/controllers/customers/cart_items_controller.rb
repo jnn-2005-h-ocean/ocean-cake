@@ -3,10 +3,10 @@ class Customers::CartItemsController < ApplicationController
 	def show
 	end
 
-	def update
+	def create
 	end
 
-	def create
+	def update
 	end
 
 	def destroy

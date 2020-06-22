@@ -1,0 +1,75 @@
+
+<div class="row">
+
+    <div class="col-md-12">
+
+      <div style="margin: 0px 0px 30px 23px;">
+        <mark style="font-size: 20px;">ショッピングカート</mark>
+      </div>
+
+      <div class="text-right">
+        		<%= link_to "カートを空にする", customers_customer_alldestroy_path, method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger" %>
+      </div><br>
+
+    </div>
+
+    <table class="table table-bordered">
+
+    	<thead>
+        	<tr class="active">
+          		<th style="width:40%">商品名</th>
+          		<th style="width:15%">単価（税込み）</th>
+          		<th style="width:15%">数量</th>
+          		<th style="width:15%">小計</th>
+          		<th style="width:15%">　　</th>
+        	</tr>
+      	</thead>
+
+    	<tbody>
+        <!--カートに入ってる商品の情報を送る-->
+
+        	<tr>
+          		<td>写真+商品名１</td>
+          		<td>単価１</td>
+          		<td>数量ボックス＋変更ボタン</td>
+          		<td>小計１</td>
+          		<td><%= link_to "削除する", method: :delete, class: "btn-sm btn-danger" %></td>
+        	</tr>
+
+        	<tr>
+          		<td>写真+商品名２</td>
+          		<td>単価２</td>
+          		<td>数量ボックス＋変更ボタン</td>
+          		<td>小計２</td>
+          		<td><%= link_to "削除する", method: :delete, class: "btn-sm btn-danger" %></td>
+        	</tr>
+
+      	</tbody>
+
+      	<table class="table table-bordered">
+
+        	<tr>
+        		<td><a class="btn btn-primary" role="button">カートに入れる（仮）</a></td>
+        		<td></td>
+        		<td></td>
+         	 	<td>合計金額</td>
+         	 	<td>合計金額（数量）</td>
+       		</tr>
+
+      	</table>
+
+
+        <!-- end -->
+	</table>
+
+
+</div>
+
+<div class="row">
+	<div class="text-center">
+		<%= link_to "情報入力へ進む", new_customers_customer_order_path(current_customer.id),class: "btn btn-success btn-lg active" %>
+	</div><br>
+</div>
+
+
+
