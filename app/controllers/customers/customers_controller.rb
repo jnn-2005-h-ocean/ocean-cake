@@ -39,8 +39,9 @@ class Customers::CustomersController < ApplicationController
       :family_name,
       :first_name,
       :family_name_kana,
-      :first_namekana,
-      :email, :postal_code,
+      :first_name_kana,
+      :email,
+      :postal_code,
       :address,
       :telephone_number,
       :is_withdrawal
