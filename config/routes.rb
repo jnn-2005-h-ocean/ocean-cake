@@ -52,13 +52,19 @@ Rails.application.routes.draw do
 					get :complete, as: :complete
 				end
 			end
+			resources :order_items, only:[:index, :show]
 			resources :cart_items, only:[:show, :update, :destroy, :create]
 			delete '/customers/:customer_id/cart_items_alldestroy' => 'cart_items#alldestroy', as: :alldestroy
 			resources :addresses, only:[:index, :create, :edit, :update, :destroy]
 		end
 
 
-		resources :products, only: [:index, :show]
+		resources :products, only: [:index, :show]do
+			member do
+				get :genre_search
+			end
+	    end
+
 
 		# serchはどうするか?
 
