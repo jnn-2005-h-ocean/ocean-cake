@@ -1,0 +1,62 @@
+<div class="edit-title">
+  <mark style="font-size: 20px;">登録情報編集</mark>
+</div>
+
+<div class="row">
+  <div class="col-xs-10">
+
+    <%= form_for @customer, url: customers_customer_path(current_customer) do |f| %>
+      <table class="margin-30">
+          <tr style="height:70px">
+            <th class="form">名前</th>
+            <td>（姓）</td>
+            <td><%= f.text_field :family_name, class: "form-control" %></td>
+            <td>（名）</td>
+            <td><%= f.text_field :first_name, class: "form-control" %></td>
+          </tr>
+
+          <tr style="height:70px">
+            <th class="form">フリガナ</th>
+            <td>（セイ）</td>
+            <td><%= f.text_field :family_name_kana, class: "form-control" %></td>
+            <td>（メイ）</td>
+            <td><%= f.text_field :first_name_kana, class: "form-control" %></td>
+          </tr>
+
+
+        <tr style="height:70px">
+          <th class="form">メールアドレス</th>
+          <td></td>
+          <td><%= f.text_field :email, class: "form-control" %></td>
+        </tr> 
+
+        <tr style="height:70px">
+          <th class="form">郵便番号（ハイフンなし）</th>
+          <td></td>
+          <td><%= f.text_field :postal_code, class: "form-control" %></td>
+        </tr> 
+
+        <tr style="height:70px">
+          <th class="form">住所</th>
+          <td></td>
+          <td colspan="3"><%= f.text_field :address, class: "form-control" %></td>
+        </tr> 
+
+
+        <tr style="height:70px">
+          <th class="form">電話番号（ハイフンなし）</th>
+          <td></td>
+          <td><%= f.text_field :telephone_number, class: "form-control" %></td>
+        </tr> 
+
+      </table>
+        <div class="button-box margin-30">
+          <%= f.submit '編集内容を保存する',class: 'btn btn-primary', style:"margin-right:130px" %>
+
+          <%= link_to "退会する", delete_customers_customer_path(current_customer.id), class: 'btn btn-danger'%>
+
+        </div>
+        <%= link_to "戻る", :back %>
+    <% end %>
+  </div>
+</div> 
