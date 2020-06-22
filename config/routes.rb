@@ -29,8 +29,7 @@ Rails.application.routes.draw do
     namespace :admins do
 		resources :customers, only:[:index, :show, :edit, :update]
 		resources :products
-		resources :orders, only: [:index, :show, :update]
-		resources :order_items, only: [:update]
+		resources :order_items, only: [:index, :show, :update]
 		resources :genres, only: [:index, :create, :edit, :update, :destroy]
 		root 'homes#top'
 	end
