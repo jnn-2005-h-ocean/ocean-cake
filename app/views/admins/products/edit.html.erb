@@ -8,20 +8,17 @@
 
     <%= form_for @product, url: admins_product_path do |f| %>
 
-      <%= attachment_image_tag @product, :image, :fill, 50, 50 %>
+      <%= attachment_image_tag @product, :image, :fill, 300, 200 %>
 
       <div class="row">
     	<div class="col-xs-5 coa-xs-offset-1">
       		<div class="image-form">
-        		<div class="image-box">
-          			<%= f.label "画像の登録" %>
-        		</div>
-        			<%= f.attachment_field :image, style:"margin-left:80px" %>
+        			<%= f.attachment_field :image%>
       		</div>
     	</div>
 
 
-        <div class="col-xs-5">
+        <div class="col-lg-6">
 
     		<div class="field form-group">
         		<%= f.label :name, "商品名" %>

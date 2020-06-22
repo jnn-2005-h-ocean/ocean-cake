@@ -18,6 +18,7 @@
           <th style="width:15%">税抜価格</th>
           <th style="width:30%">ジャンル</th>
           <th style="width:15%">ステータス</th>
+          <th></th>
         </tr>
       </thead>
 
@@ -27,13 +28,14 @@
         <tr>
           <td><%= product.id %></td>
           <td><%= link_to product.name, admins_product_path(product.id) %></td>
-          <td><%= product.unit_price %></td>
+          <td>¥<%= product.unit_price %></td>
           <td><%= product.genre.name %></td>
           <%if product.is_selling == true %>
               <td>有効</td>
           <% else %>
               <td>無効</td>
           <% end %>
+          <td><%= link_to "Destroy", admins_product_path(product.id), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger" %></td>
         </tr>
 
         <% end %>
