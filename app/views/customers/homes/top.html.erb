@@ -1,11 +1,11 @@
 <!-- ジャンル検索機能 -->
 <div class="row">
 	<div class="col-xs-4">
-		<h2 style="font-family: 'Hannotate SC',sans-serif;">ジャンル検索</h2>
+		<h3 style="font-family: 'Hannotate SC',sans-serif; text-align: center;">ジャンル検索</h3>
 		<% @genres.each do |genre| %>
 		<div style="text-align: center; font-family: 'Hannotate SC',sans-serif;">
 			<ul class="list-group">
-				<li class="list-group-item"><%= genre.name %></li>
+				<li class="list-group-item"><%= link_to genre.name,genre_search_customers_product_path(genre.id) %></li>
 			</ul>
 		</div>
 		<% end %>
@@ -34,7 +34,7 @@
 <!-- 新　右下のオススメ欄 -->
 <div class="col-xs-12">
 	<div class="recommend-items">
-		<h2 style="font-family: 'Hannotate SC',sans-serif;">オススメ商品</h2>
+		<h3 style="font-family: 'Hannotate SC',sans-serif;">オススメ商品</h3>
 	</div>
 </div>
 
@@ -56,4 +56,6 @@
 		<% end %>
 	</div> <!-- ---------------row------------------------ -->
 </div>
+
+
 

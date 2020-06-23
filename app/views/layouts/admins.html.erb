@@ -1,58 +1,57 @@
 <!DOCTYPE html>
 <html>
 
-  <head>
-    <title>ocean_cake_admin</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+  <title>ocean_cake_admin</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  </head>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
 
-  <body>
-    <!--ヘッダーの記述-->
-    <header class="navbar navbar-fixed-top navbar-inverse">
-      <div class="container">
-
-        <nav class="nav navbar-nav navbar-left">
-          <span><%= link_to 'LOGO',admins_root_path %></span>
-        </nav>
-        <nav>
-          <ul class="nav navbar-nav navbar-right">
-            <!--if文でサインインとアウト時の表示を変更-->
-            <% if admin_signed_in? %>
-              <li class=""><%= link_to "商品一覧", admins_products_path%></li>
-              <li class=""><%= link_to "会員一覧", admins_customers_path%></li>
-              <li class=""><%= link_to "注文履歴一覧", admins_order_items_path%></li>
-              <li class=""><%= link_to "ジャンル一覧", admins_genres_path%></li>
-              <li class=""><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
-
-            <% else %>
-
-              <li class=""><%= link_to "商品一覧", admins_products_path%></li>
-
-              <li class=""><%= link_to "ログイン", new_admin_session_path%></li>
-
-            <% end %>
-          </ul>
-        </nav>
-
-      </div>
-    </header>
-    <!--ヘッダーの記述-->
-
-
+<body>
+  <!--ヘッダーの記述-->
+  <header class="navbar navbar-fixed-top navbar-inverse">
     <div class="container">
-      <p id="notice"><%= notice %></p> <!--デバイスでnotice設定されているので呼び出してるだけ-->
-        <%= yield %>
+
+      <nav class="nav navbar-nav navbar-left">
+        <span style="font-family: cursive; font-size: 30px;"><%= link_to 'Nagano-cake',admins_root_path %></span>
+      </nav>
+      <nav>
+        <ul class="nav navbar-nav navbar-right">
+          <!--if文でサインインとアウト時の表示を変更-->
+          <% if admin_signed_in? %>
+          <li style="font-family: 'Hannotate SC',sans-serif;"><%= link_to "商品一覧", admins_products_path%></li>
+          <li style="font-family: 'Hannotate SC',sans-serif;"><%= link_to "会員一覧", admins_customers_path%></li>
+          <li style="font-family: 'Hannotate SC',sans-serif;"><%= link_to "注文履歴一覧", admins_order_items_path%></li>
+          <li style="font-family: 'Hannotate SC',sans-serif;"><%= link_to "ジャンル一覧", admins_genres_path%></li>
+          <li style="font-family: 'Hannotate SC',sans-serif;"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
+
+          <% else %>
+
+          <li style="font-family: 'Hannotate SC',sans-serif;"><%= link_to "商品一覧", admins_products_path%></li>
+          <li style="font-family: 'Hannotate SC',sans-serif;"><%= link_to "ログイン", new_admin_session_path%></li>
+
+          <% end %>
+        </ul>
+      </nav>
+
     </div>
+  </header>
+  <!--ヘッダーの記述-->
 
-    <footer class="navbar navbar-fixed-bottom navbar-inverse">
 
-    </footer>
+  <div class="container">
+    <p id="notice"><%= notice %></p> <!--デバイスでnotice設定されているので呼び出してるだけ-->
+    <%= yield %>
+  </div>
 
-  </body>
+  <footer class="navbar navbar-fixed-bottom navbar-inverse">
+
+  </footer>
+
+</body>
 
 </html>
