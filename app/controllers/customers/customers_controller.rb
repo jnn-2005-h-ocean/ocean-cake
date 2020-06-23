@@ -28,9 +28,11 @@ class Customers::CustomersController < ApplicationController
 
   def active
     @customer = Customer.find(params[:id])
-    @customer = is_withdrawal = true
-
-    redirect_to
+    @customer.is_withdrawal = true
+    @customer.save
+    #ログアウトさせる
+    reset_session
+    redirect_to customers_root_path
   end
 
   private
