@@ -26,40 +26,51 @@
       	</thead>
 
     	<tbody>
+
+        <% @unit_price = 0 %> <!--単価-->
+        <% @add_price = 0 %> <!--足される額-->
+        <% @subtotal = 0 %> <!--とりあえず合計-->
+
         <!--カートに入ってる商品の情報を送る-->
+        <!-- current_customer.cartsを持ってきてcartにいれてる -->
+          <% @cart_items.each do |cart_item| %>
+
+          <!-- current_customerを@customerに -->
+          <%= form_for [@customer, cart_item],url: customers_customer_cart_item_path(@customer, cart_item),method: :patch do |f| %>
 
         	<tr>
-          		<td>写真+商品名１</td>
-          		<td>単価１</td>
-          		<td>数量ボックス＋変更ボタン</td>
-          		<td>小計１</td>
-          		<td><%= link_to "削除する", method: :delete, class: "btn-sm btn-danger" %></td>
+              <!-- 商品名 -->
+          		<td><%= cart_item.product.name %></td>
+          		<!-- 単価(税込) delimitedは3桁区切り文字 to.sは文字列に変換-->
+              <% @unit_price = (cart_item.product.unit_price * 1.1).floor%>
+              <td><%= @unit_price.to_s(:delimited)%>円</td>
+              <!-- 数量 turbolinksはajaxぽくできるやつ-->
+              <td><%= f.number_field :number,in: 1..100, step: 1, :value => cart_item.number %>
+              <%= f.submit "変更", class: "btn btn-primary",data: {:turbolinks => "false"} %></td><!-- 小計 -->
+              <% @subtotal = (@unit_price * cart_item.number).floor %>
+              <td><%= @subtotal.to_s(:delimited) %>円</td>
+              <% @add_price = @add_price + @subtotal %>
+          		<!-- 削除ボタン -->
+              <td><%= link_to "削除する", customers_customer_cart_item_path(@customer,cart_item), method: :delete, class: "btn btn-danger" %></td>
         	</tr>
 
-        	<tr>
-          		<td>写真+商品名２</td>
-          		<td>単価２</td>
-          		<td>数量ボックス＋変更ボタン</td>
-          		<td>小計２</td>
-          		<td><%= link_to "削除する", method: :delete, class: "btn-sm btn-danger" %></td>
-        	</tr>
+          <% end %>
+          <% end %>
 
       	</tbody>
 
       	<table class="table table-bordered">
 
         	<tr>
-        		<td><a class="btn btn-primary" role="button">カートに入れる（仮）</a></td>
+        		<td><%= link_to "買い物を続ける",customers_root_path, class: "btn btn-primary" %></td>
         		<td></td>
         		<td></td>
          	 	<td>合計金額</td>
-         	 	<td>合計金額（数量）</td>
+         	 	<td><%= @add_price.to_s(:delimited) %>円</td>
        		</tr>
 
       	</table>
 
-
-        <!-- end -->
 	</table>
 
 
