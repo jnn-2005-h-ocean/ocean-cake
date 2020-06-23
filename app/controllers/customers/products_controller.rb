@@ -15,7 +15,7 @@ class Customers::ProductsController < ApplicationController
 	def genre_search
 		@genres = Genre.all
 		@genre = Genre.find(params[:id])
-		# @products = Product.where(genre_id:, params[:id])
+		@products = Product.where(genre_id: params[:id])
 	end
 
 	private

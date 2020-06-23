@@ -7,37 +7,37 @@ class Customers::CartItemsController < ApplicationController
 	end
 
 	def create
-    	@cart_item = CartItem.new(cart_item_params)
-    	@cart_item.customer_id = current_customer.id
-    	if @cart_item.save
-      	redirect_to customers_customer_cart_item_path
-    else
-      	session[:cart_item] = @cart_item.attributes.slice(*cart_item_params.keys)
-      	@genres = Genre.all
-      	@product = Product.find_by(id:@cart_item.product_id)
-      	redirect_to product_path(@product.id), flash: {alert: '※個数を選択して下さい'}
-    end
-  end
+		@cart_item = CartItem.new(cart_item_params)
+		#新しく入れるcart_itemと今まで入っているcart_itemを存在しているかの確認
+		if current_customer.cart_items.find_by(product_id: @cart_item.product_id)
+    		redirect_to controller: 'cart_items', action: 'show', id: current_customer.id,alert:"選択した商品はすでにカートに入っています。"
+    	else
+    		@cart_item.customer_id = current_customer.id
+    		@cart_item.save
+      		redirect_to controller: 'cart_items', action: 'show', id: current_customer.id
+    	end
+
+  	end
 
 	def update
 		@customer = current_customer
-		@cart_item = Cart_item.find_by(customer_id: @customer.id,id: params[:id])
+		@cart_item = CartItem.find_by(customer_id: @customer.id,id: params[:id])
 		@cart_item.update(cart_item_params)
-		redirect_to customers_customer_cart_items_path(current_customer.id)
+		redirect_to controller: 'cart_items', action: 'show', id: current_customer.id
 	end
 
 	def destroy
 		@customer = current_customer
-		@cart_item = Cart_item.find_by(customer_id: @customer.id,id: params[:id])
+		@cart_item = CartItem.find_by(customer_id: @customer.id,id: params[:id])
 		@cart_item.destroy
-		redirect_to customers_customer_cart_items_path(@customer.id)
+		redirect_to controller: 'cart_items', action: 'show', id: current_customer.id
 	end
 
 	def alldestroy
 		@customer = current_customer
 		@cart_items = current_customer.cart_items
 		@cart_items.destroy_all
-		redirect_to customers_customer_cart_items_path(@customer.id)
+		redirect_to controller: 'cart_items', action: 'show', id: current_customer.id
 	end
 
 	private
