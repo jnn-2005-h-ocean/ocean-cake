@@ -12,7 +12,7 @@
       <%= current_customer.is_withdrawal %>
 
       <%= link_to "退会しない", customers_customer_path(current_customer.id), class: 'btn btn-primary btn-lg', style: "margin-right:50px" %>
-      <%= link_to "退会する", active_customers_customer_path(current_customer),class: 'btn btn-danger btn-lg',　method: :patch %>
+      <%= link_to "退会する", active_customers_customer_path,class: 'btn btn-danger btn-lg', method: :patch %>
     </div>
 
   </div>
