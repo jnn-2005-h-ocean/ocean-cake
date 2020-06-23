@@ -1,0 +1,64 @@
+<div class="row">
+  <div class="col-xs-8 col-xs-offset-2">
+
+    <div class="show-title">
+      <mark style="font-size: 20px;">
+        <%= @custmer.family_name %>
+        <%= @custmer.first_name %>
+        さんの会員詳細
+      </mark>
+    </div>
+
+    <table border="0">
+      <tr>
+        <th>顧客ID</th>
+        <td>
+          <%= @custmer.id %>
+          <div class="status">
+            <% if @custmer.is_false == true %>
+              <p>有効会員</p>
+            <% else %>
+              <p>退会済会員</p>
+            <% end %>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <th>氏名</th>
+        <td>
+          <%= @custmer.last_name %>
+          <%= @custmer.first_name %>
+        </td>
+      </tr>
+      <tr>
+        <th>フリガナ</th>
+        <td>
+          <%= @custmer.family_name_kana %>
+          <%= @custmer.first_name_kana %> 
+        </td>
+      </tr>
+      <tr>
+        <th>郵便番号</th>
+        <td><%= @custmer.postal_code %></td>
+      </tr>
+      <tr>
+        <th>住所</th>
+        <td><%= @custmer.address %></td>
+      </tr>
+      <tr>
+        <th>電話番号</th>
+        <td><%= @custmer.telephone_number %></td>
+      </tr>
+      <tr>
+        <th>メールアドレス</th>
+        <td><%= @custmer.email %></td>
+      </tr>
+    </table>
+
+    <div class="margin">
+      <%=link_to "編集する", edit_admins_customer_path(@custmer.id),class: "btn btn-primary", style:"margin-right:30px" %>
+      <%=link_to "注文履歴一覧を見る",  admins_order_item_path(custmer_id: @custmer.id, name: "custmer") ,class: "btn btn-primary" %>
+    </div>
+
+  </div>
+</div>
