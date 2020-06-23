@@ -26,7 +26,7 @@
               <li class="">ようこそ、<%= current_customer.family_name %>さん!</li>
               <li class=""><%= link_to "マイページ", customers_customer_path(current_customer.id) %></li>
               <li class=""><%= link_to "商品一覧", customers_products_path %></li>
-              <li class=""><%= link_to "カート", customers_customer_cart_items_path(current_customer.id) %></li>
+              <li class=""><%= link_to "カート", customers_customer_cart_item_path(current_customer.id,current_customer.id) %></li>
               <li class=""><%= link_to "ログアウト",destroy_customer_session_path, method: :delete %></li>
 
             <% else %>
