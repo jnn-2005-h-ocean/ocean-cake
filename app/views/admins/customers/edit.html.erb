@@ -1,0 +1,82 @@
+<<div class="edit-title">
+  <mark style="font-size: 20px;">
+    <%= @custmer.family_name %>
+    <%= @custmer.first_name %>
+    さんの会員情報編集
+  </mark>
+</div>
+
+<div class="row">
+  <div class="col-xs-8 col-xs-offset-2">
+
+    <%= form_for @custmer, url: admins_custmer_path do |f| %>
+
+    <table border="0">
+      <tr>
+      <th>会員ID</th>
+      <td>
+        <%= @custmer.id %>
+      </td>
+      </tr>
+
+
+    <tr>
+      <th>氏名</th>
+      <td><%= f.text_field :last_name, class: "form-control" %></td>
+      <td>&nbsp;&nbsp;&nbsp;</td>
+      <td><%= f.text_field :first_name, class: "form-control" %></td>
+    </tr> 
+
+    <tr>
+      <th>フリガナ</th>
+      <td><%= f.text_field :family_name_kana, class: "form-control" %></td>
+      <td>&nbsp;&nbsp;&nbsp;</td>
+      <td><%= f.text_field :first_name_kana, class: "form-control" %></td>
+    </tr> 
+
+    <tr>
+      <th>郵便番号</th>
+      <td>
+        <%= f.text_field :postal_code, class: "form-control" %>
+      </td>
+    </tr> 
+
+    <tr>
+      <th>住所</th>
+      <td colspan="3">
+        <%= f.text_field :address, class: "form-control" %>
+      </td>
+    </tr> 
+
+    <tr>
+      <th>電話番号</th>
+      <td>
+        <%= f.text_field :telephone_number, class: "form-control" %>
+      </td>
+    </tr> 
+
+    <tr>
+      <th>メールアドレス</th>
+      <td>
+        <%= f.text_field :email, class: "form-control" %>
+      </td>
+    </tr> 
+
+    <tr>
+      <th>会員ステータス</th>
+      <td>
+        <label>
+        <%= f.radio_button :is_false, :true %>有効
+        </label>
+      <label>
+        <%= f.radio_button :is_false, :false %>退会済み
+      </label>
+      </td>
+    </tr> 
+    </table>
+
+  <%= f.submit('変更を保存する',class: 'btn btn-primary', style: 'margin: 10px 0px 20px 0px') %>
+  <% end %>
+  
+  </div>
+</div>
