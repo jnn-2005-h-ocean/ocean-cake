@@ -6,7 +6,7 @@
 	</div>
 
 	<table class="table table-inverse margin-30">
-	  <% if current_customer.id.any? %>
+
 	    <thead>
 	      <tr class="active">
 		    <th style="width:10%">会員ID</th>
@@ -15,14 +15,18 @@
 		    <th style="width:30%">ステータス</th>
 		  </tr>
 	    </thead>
-	  <% @customers.each do |custmer| %>
+	  <% @customers.each do |customer| %>
 	    <tbody>
 		  <tr>
-		    <td><%= custmer.id %></td>
-			<td><%=link_to "#{custmer.family_name} #{custmer.first_name}", admins_custmer_path(custmer.id) %></td>
-			<td><%= custmer.email %></td>
+		    <td><%= customer.id %></td>
 			<td>
-	          <% if custmer.is_false == true %>
+				<%= link_to admins_customer_path(customer.id) do %>
+					<%= "#{customer.family_name}　#{customer.first_name}" %>
+				<% end %>
+			</td>
+			<td><%= customer.email %></td>
+			<td>
+	          <% if customer.is_withdrawal == false %>
 		        <p>有効</p>
 		      <% else %>
 		        <p>退会済</p>
@@ -31,14 +35,10 @@
 		  </tr>
 		</tbody>
 	  <% end %>
-	  <% else %>
-	    <p>該当する会員は見つかりませんでした</p>
-	  <% end %>
 	</table>
 
-    <div id="page">
-      <%= paginate @custmers, class: "paginate" %>
-    </div>
+
+    <div class="text-center"><%= paginate @customers %></div>
 
   </div>
 </div>
