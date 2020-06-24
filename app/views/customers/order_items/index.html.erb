@@ -23,18 +23,18 @@
 		<tr>
 		  <td><%= order.created_at.strftime('%Y/%m/%d') %></td>
 		  <td>
-			  <%= order.postal_code %><br>
-			  <%= order.address %><br>
-			  <%= order.reciever %>
+			  <%= order.shipping_postal_code %><br>
+			  <%= order.shipping_address %><br>
+			  <%= order.shipping_name %>
 		   </td>
 		   <td>
-			  <% order.order_details.each do |order_detail| %>
+			  <% order.order_items.each do |order_item| %>
 			    <p class="w-break">
-				  <%= order_detail.product.name %>
+				  <%= order_item.product.name %>
 				</p>
 			  <% end %>
 		   </td>
-		   <td><%= order.total_price += order.postage %>円</td>
+		   <td><%= order.total_fee.to_s(:delimited) %>円</td>
 		   <td>
 		      <% if order.order_status == 0 %>
 			    入金待ち
@@ -49,7 +49,7 @@
 			  <% end %>
 		   </td>
 		   <td class="table-cell">
-			  <%=  link_to "表示する", customer_order_path(customer_id: current_customer.id,id: order.id), class:"btn btn-primary" %>
+			  <%=  link_to "表示する",  customers_customer_order_item_path(current_customer.id,order.id), class:"btn btn-primary" %>
 		   </td>
 		</tr>
 	  </tbody>
