@@ -1,13 +1,15 @@
-<div class="mypage-title">
-  <mark style="font-size: 20px;">マイページ</mark>
-</div>
 
-<div class="row">
+
+<div class="row", style="font-family: 'Hannotate SC',sans-serif;">
   <div class="col-xs-7">
+    <div class="mypage-title">
+      <mark style="font-size: 20px;">マイページ</mark>
+    </div>
     <div>
-      <h1 class="main-title">登録情報</h1>
-      <%=  link_to "編集する", edit_customers_customer_path(current_customer.id), class:"btn btn-primary" %>
-      <%=  link_to "パスワードを変更する", edit_customer_registration_path, class:"btn btn-primary",style:"margin-left:10px;" %>
+      <h2 class="main-title">登録情報
+        <%=  link_to "編集する", edit_customers_customer_path(current_customer.id), class:"btn btn-primary" %>
+        <%=  link_to "パスワードを変更する", edit_customer_registration_path, class:"btn btn-primary",style:"margin-left:10px;" %>
+      </h2>
     </div>
     <table class="table table-bordered">
       <tr>
@@ -53,13 +55,15 @@
       </tr>
     </table>
     <div>
-      <h1 class="main-title" style="margin-right:26px;">配送先</h1>
-      <%=  link_to "一覧を見る", customers_customer_addresses_path(current_customer.id), class:"btn btn-primary"%>
+      <h2 class="main-title" style="margin-right:26px;">配送先
+        <%=  link_to "一覧を見る", customers_customer_addresses_path(current_customer.id), class:"btn btn-primary"%>
+      </h2>
     </div>
 
     <div>
-      <h1 class="main-title">注文履歴</h1>
-      <%=  link_to "一覧を見る", customers_customer_order_items_path(current_customer.id), class:"btn btn-primary" %>
+      <h2 class="main-title">注文履歴
+        <%=  link_to "一覧を見る", customers_customer_order_items_path(current_customer.id), class:"btn btn-primary" %>
+      </h2>
     </div>
   </div>
 </div>

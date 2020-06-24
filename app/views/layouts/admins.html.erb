@@ -42,11 +42,15 @@
   </header>
   <!--ヘッダーの記述-->
 
-
   <div class="container">
-    <p id="notice"><%= notice %></p> <!--デバイスでnotice設定されているので呼び出してるだけ-->
-    <%= yield %>
-  </div>
+      <% if flash[:notice] %>
+      　　<div class="alert alert-warning" role="alert"><strong><%= notice %></strong></div>
+      <% end %>
+      <% if flash[:alert] %>
+      　　<div class="alert alert-danger" role="alert"><strong><%= alert %></strong></div>
+      <% end %>
+      <%= yield %>
+    </div>
 
   <footer class="navbar navbar-fixed-bottom navbar-inverse">
 
