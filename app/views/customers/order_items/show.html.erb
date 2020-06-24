@@ -16,18 +16,19 @@
   	    <tr>
   		    <th style="vertical-align: middle">配送先</th>
   		    <td style="vertical-align: middle">
-  			    <%= @shipping_postal_code %><br>
-  			    <%= @shipping_address %><br>
-<!--   			    <%= @ %>-->
+  			    〒<%= @order.shipping_postal_code %><br>
+            <%= @order.shipping_address %><br>
+            <%= @order.shipping_name %>
         </td>
   	    </tr>
   	    <tr>
   		    <th style="vertical-align: middle">支払方法</th>
   		    <td style="vertical-align: middle">
-  			   <% if @payment_method == 0 %>
+  			   <% case @order.payment_method %>
+            <% when 'bank_transfer' %>
+  			       <p>銀行振込</p>
+  			   <% when 'credit'%>
   			   <p>クレジット</p>
-  			   <% else %>
-  			   <p>銀行振込</p>
   			   <% end %>
   		    </td>
   	    </tr>
@@ -57,15 +58,15 @@
     <table class="table table-bordered">
       <tr>
   	      <th style="vertical-align: middle">商品合計</th>
-  		  <td style="vertical-align: middle"><%= @total_fee %></td>
+  		  <td style="vertical-align: middle"><%= (@order.total_fee - @order.shipping_fee).to_s(:delimited) %>円</td>
   	  </tr>
   	  <tr>
   	      <th style="vertical-align: middle">配送料</th>
-  		  <td style="vertical-align: middle"><%= @shipping_fee %></td>
+  		  <td style="vertical-align: middle"><%= @order.shipping_fee %>円</td>
   	  </tr>
   	  <tr>
   	      <th style="vertical-align: middle">ご請求額</th>
-  		  <td style="vertical-align: middle"><%= @total_fee + @@shipping_fee %></td>
+  		  <td style="vertical-align: middle"><%= @order.total_fee.to_s(:delimited) %>円</td>
   	  </tr>
     </table>
     </div>
@@ -84,4 +85,22 @@
   		  <th style="width:50px">小計</th>
   		</tr>
   	  </thead>
-      <!-- 以下にeach文入れます -->
+
+      <tbody>
+        <% @order_items.each do |order_item| %>
+        <tr>
+          <td><%= order_item.product.name %></td>
+          <% @unit_price = (order_item.product.unit_price * 1.1).floor%>
+          <td><%= @unit_price.to_s(:delimited)%>円</td>
+          <td><%= order_item.number %></td>
+          <% @subtotal = (@unit_price * order_item.number).floor %>
+              <td><%= @subtotal.to_s(:delimited) %>円</td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+
+
+
+

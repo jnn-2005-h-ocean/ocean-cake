@@ -4,7 +4,7 @@ class Customers::OrdersController < ApplicationController
 		@customer = Customer.find(params[:customer_id])
 		if @customer.cart_items.blank?
  			flash[:notice] = "カートの中身がありません"
-			redirect_to customers_customer_cart_items_path(current_customer.id)
+			redirect_to customers_customer_cart_item_path(current_customer.id,current_customer.id)
 		else
 			@order = Order.new
 		end
