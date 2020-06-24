@@ -1,67 +1,56 @@
 
-<div class="container">
+<div class="row", style="font-family: 'Hannotate SC',sans-serif;">
+	<p style="font-size:20pt;">配送先登録/一覧</p>
 
-		<p style="font-size:20pt;">配送先登録/一覧</p>
+	<%= form_for @address, url:  customers_customer_addresses_path(current_customer) do |f| %>
 
-		<%= form_for @address, url:  customers_customer_addresses_path(current_customer) do |f| %>
+	<table class="table">
 
-		<table class="table" id="none-border">
+		<tbody>
+			<tr>
+				<td><%= f.label :届け先郵便番号 %></td>
+				<td><%= f.text_field :shipping_postal_code %></td>
+			</tr>
 
-			<tbody>
-              	<tr>
-                	<td><%= f.label :届け先郵便番号 %></td>
-                	<td><%= f.text_field :shipping_postal_code%></td>
-              	</tr>
+			<tr>
+				<td><%= f.label :届け先住所 %></td>
+				<td><%= f.text_area :shipping_address, :size => "30*30" %></td>
+			</tr>
 
-				<tr>
-                	<td><%= f.label :届け先住所%></td>
-                	<td><%= f.text_field :shipping_address%></td>
-              	</tr>
+			<tr>
+				<td><%= f.label :届け先名 %></td>
+				<td><%= f.text_field :shipping_name %></td>
+				<td><%= f.submit "登録する",class: "btn btn-success"%></td>
+			</tr>
 
-              	<tr>
-                	<td><%= f.label :届け先名%></td>
-                	<td><%= f.text_field :shipping_name%></td>
-              	</tr>
+		</tbody>
+	</table>
 
+	<% end %>
 
-				<tr>
-                	<td><%= f.submit "登録する",class: "btn btn-success"%></td>
-              	</tr>
-            </tbody>
-		</table>
+	<table class="table table-bordered">
 
-		<% end %>
+		<thead style="background-color:#e0e0e0">
+			<tr>
+				<th>郵便番号</th>
+				<th>住所</th>
+				<th>宛名</th>
+				<th></th>
+			</tr>
+		</thead>
 
-
-		<table style="margin:10px" border="1">
-
-			<thead style="background-color:#e0e0e0">
-				<tr>
-					<th>郵便番号</th>
-					<th>住所</th>
-					<th>宛名</th>
-					<th></th>
-				</tr>
-			</thead>
-
-			<tbody>
-				<!-- 宛名データを受けとりテーブルで表示　-->
-				<% @addresses.each do |myaddress| %>
-				<tr>
-					<td><%= myaddress.shipping_postal_code%></td>
-					<td><%= myaddress.shipping_address%></td>
-					<td><%= myaddress.shipping_name%></td>
-					<td><%= link_to "編集する",edit_customers_customer_address_path(myaddress.customer_id,myaddress.id), class: "btn-sm btn-success" %></td>
-					<td><%= link_to "削除する",customers_customer_address_path(myaddress.customer_id,myaddress.id), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger" %></td>
-				</tr>
-
-				<% end %>
-
-
-			</tbody>
-		</table>
-
-
+		<tbody>
+			<!-- 宛名データを受けとりテーブルで表示　-->
+			<% @addresses.each do |myaddress| %>
+			<tr>
+				<td><%= myaddress.shipping_postal_code %></td>
+				<td><%= myaddress.shipping_address %></td>
+				<td><%= myaddress.shipping_name %></td>
+				<td><%= link_to "編集する",edit_customers_customer_address_path(myaddress.customer_id,myaddress.id), class: "btn-sm btn-success" %>
+					<%= link_to "削除する",customers_customer_address_path(myaddress.customer_id,myaddress.id), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger" %>
+				</td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
 </div>
-
-
