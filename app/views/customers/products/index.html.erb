@@ -1,5 +1,3 @@
-
-
 <div class="row", style="font-family: 'Hannotate SC',sans-serif; text-align: center;">
 	<!-- 左側　ジャンル -->
 	<div class="col-xs-3">
@@ -13,34 +11,21 @@
 		<% end %>
 	</div>
 
-
-
 	<div class="col-xs-9">
-
 		<h3>商品一覧</h3>
+		<% @products.each do |product| %> <!-- firstをつけると配列に対して回数を指定することができる -->
 
-		<% i = 0 %>
-		<table class="nonborder">
-			<% @products.each do |product| %>
-				<td>
-					<%= link_to customers_product_path(product.id) do %>
-					<%= attachment_image_tag product, :image, :fill, 200, 150 %>
-				<br>
-	        		<%= product.name %>
-	        	<br>
-	        		<p><%= product.unit_price %>円</p>
-	    			<% end %>
-	    		</td>
-	    		<!-- 4つ毎に改行 -->
-					<% i = i + 1 %>
-					<% if i % 4 == 0 %>
-						<tr></tr>
-					<% end %>
-	    	<% end %>
-		</table>
-
+		<div class="col-xs-3">
+			<div class="thumbnail">
+				<%= link_to customers_product_path(product.id) do %>
+				<%= attachment_image_tag product, :image, :fill, 200, 150 %>
+				<div class="caption">
+					<p><%= product.name %></p>
+					<p><%= product.unit_price %>円</p>
+				</div>
+				<% end %>
+			</div>
+		</div>
+		<% end %>
 	</div>
-
-
 </div>
-
