@@ -1,50 +1,50 @@
 
-  <div class="row">
+<div class="row", style="font-family: 'Hannotate SC',sans-serif";>
 
-    <div class="col-md-9">
-      <div style="margin: 0px 0px 30px 23px;">
-        <mark style="font-size: 20px;">商品一覧</mark>
-        <%= link_to "追加＋ボタン探す", new_admins_product_path %>
-      </div>
+  <div class="col-md-9">
+    <div style="margin: 0px 0px 30px 23px;">
+      <mark style="font-size: 20px;">商品一覧</mark>
+      <%= link_to image_tag('admins.products.index.png'), new_admins_product_path %>
     </div>
-
-    <table class="table">
-
-      <thead>
-        <tr class="active">
-          <th style="width:10%">商品ID</th>
-          <th style="width:30%">商品名</th>
-          <th style="width:15%">税抜価格</th>
-          <th style="width:30%">ジャンル</th>
-          <th style="width:15%">ステータス</th>
-          <th></th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <% @products.each do |product| %>
-
-        <tr>
-          <td><%= product.id %></td>
-          <td><%= link_to product.name, admins_product_path(product.id) %></td>
-          <td>¥<%= product.unit_price %></td>
-          <td><%= product.genre.name %></td>
-          <%if product.is_selling == true %>
-              <td>有効</td>
-          <% else %>
-              <td>無効</td>
-          <% end %>
-          <td><%= link_to "Destroy", admins_product_path(product.id), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger" %></td>
-        </tr>
-
-        <% end %>
-
-      </tbody>
-
-    </table>
-
-
   </div>
+
+  <table class="table">
+
+    <thead>
+      <tr class="active">
+        <th style="width:10%">商品ID</th>
+        <th style="width:30%">商品名</th>
+        <th style="width:15%">税抜価格</th>
+        <th style="width:30%">ジャンル</th>
+        <th style="width:15%">ステータス</th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @products.each do |product| %>
+
+      <tr>
+        <td><%= product.id %></td>
+        <td><%= link_to product.name, admins_product_path(product.id) %></td>
+        <td>¥<%= product.unit_price %></td>
+        <td><%= product.genre.name %></td>
+        <%if product.is_selling == true %>
+        <td>有効</td>
+        <% else %>
+        <td>無効</td>
+        <% end %>
+        <td><%= link_to "Destroy", admins_product_path(product.id), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger" %></td>
+      </tr>
+
+      <% end %>
+
+    </tbody>
+
+  </table>
+
+
+</div>
 
 
 
