@@ -17,7 +17,6 @@
 @import "bootstrap";
 
 header {
-	color: white;
 	padding-top: 10px;
 }
 
@@ -29,8 +28,15 @@ header .navbar-left span {
 header navbar-right{
 		font-size:18px;
 		margin-top:25px;
-		color:white;
 		}
+
+header a {
+	color: black;
+}
+
+header a:hover {
+	text-decoration: none;
+}
 
 header li{
 		margin-right:50px;
@@ -53,5 +59,15 @@ body {
 .row {
 	margin-top: 30px;
 }
+
+.list-group-item a {
+	color: black;
+}
+
+.list-group-item a:hover {
+	text-decoration: none;
+}
+
+
 
 
