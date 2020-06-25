@@ -1,0 +1,87 @@
+
+
+<div class="row">
+
+	<P class = "message"><%= flash[:update] %></P>
+
+		<p style="font-size:20pt;">注文履歴詳細</p>
+
+		<%= form_with(model: @order, url: admins_order_path, local: true) do |f| %>
+
+		<table class="table" id="none-border">
+
+			<tbody>
+              	<tr>
+              		<td>購入者</td>
+                	<td><%= "#{@order.customer.family_name}　#{@order.customer.first_name}" %></td>
+              	</tr>
+
+				<tr>
+                	<td>配送先</td>
+                	<td>〒<%= "#{@order.shipping_postal_code}#{@order.shipping_address}" %><td>
+              	</tr>
+
+              	<tr>
+                	<td>支払い方法</td>
+                	<% case @order.payment_method %>
+            				<% when 'bank_transfer' %>
+  			      				<td>銀行振込</td>
+  			   				<% when 'credit'%>
+  			   					<td>クレジット</td>
+  			  				 <% end %>
+              	</tr>
+
+              	<tr>
+              		<td>注文ステータス</td>
+		  			<td>
+		  				<%= f.select :order_status, Order.order_statuses.keys.to_a %>
+		  			</td>
+
+					<td><%= f.submit '更新', class: "btn btn-primary" %></td>
+              	</tr>
+
+            </tbody>
+		</table>
+		<% end %>
+</div>
+
+	<div  class="row" style="position: relative;">
+		<table class="table col-md-8">
+
+			<thead style="background-color:#e0e0e0">
+				<tr>
+					<th>商品名</th>
+					<th>単価（税込み）</th>
+					<th>数量</th>
+					<th>小計</th>
+					<th>制作ステータス</th>
+					<th></th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<tr>
+					<% @order_items.each do |order_item| %>
+					<%= form_for order_item, url: admins_order_item_path(order_item) do |f| %>
+					<td><%= order_item.product.name %></td>
+					<% @unit_price = (order_item.product.unit_price * 1.1).floor%>
+         			<td><%= @unit_price.to_s(:delimited)%>円</td>
+					<td><%= order_item.number %></td>
+					<% @subtotal = (@unit_price * order_item.number).floor %>
+              		<td><%= @subtotal.to_s(:delimited) %>円</td>
+
+              		<!-- selectで選んだenumをform_forで送信する -->
+		  			<td>
+		  				<%= f.select :making_status, OrderItem.making_statuses.keys.to_a %>
+		  			</td>
+
+					<td><%= f.submit '更新', class: "btn btn-primary" %></td>
+				</tr>
+				<% end %>
+
+			</tbody>
+			<% end %>
+		</table>
+
+
+</div>

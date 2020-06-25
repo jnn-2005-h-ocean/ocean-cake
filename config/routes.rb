@@ -30,6 +30,7 @@ Rails.application.routes.draw do
 		resources :customers, only:[:index, :show, :edit, :update]
 		resources :products
 		resources :order_items, only: [:index, :show, :update]
+		resources :orders, only: [:index, :show, :update]
 		resources :genres, only: [:index, :create, :edit, :update, :destroy]
 		root 'homes#top'
 	end
