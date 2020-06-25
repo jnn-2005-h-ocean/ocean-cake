@@ -1,5 +1,6 @@
 class Admins::OrderItemsController < ApplicationController
 	layout 'admins'
+	before_action :authenticate_admin!
 
 	def update
 		order_item = OrderItem.find(params[:id])
