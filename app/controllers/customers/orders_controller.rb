@@ -4,7 +4,7 @@ class Customers::OrdersController < ApplicationController
 		@customer = Customer.find(params[:customer_id])
 		if @customer.cart_items.blank?
  			flash[:notice] = "カートの中身がありません"
-			redirect_to customers_customer_cart_item_path(current_customer.id,current_customer.id)
+			redirect_to customers_customer_cart_items_path(current_customer.id)
 		else
 			@order = Order.new
 		end
@@ -22,7 +22,7 @@ class Customers::OrdersController < ApplicationController
     		@order.shipping_name = current_customer.family_name + current_customer.first_name
 
     elsif params[:select_address] == "登録済み住所から選択"
-    	@shipping_address = Address.find(params[:detail][:shipping_address_id])
+    	@shipping_address = Address.find(params[:page][:name])
 			@order.shipping_postal_code = @shipping_address.shipping_postal_code
 			@order.shipping_address = @shipping_address.shipping_address
 			@order.shipping_name = @shipping_address.shipping_name
