@@ -2,10 +2,15 @@
 
 <!-- ここは管理者側のトップページです -->
 
-<h1>管理者画面</h1>
 
-<div class="row">
-  <div class="col-md-4">
-    <h2 class =>本日の注文数 件</h>
-  </div>
+<div class="row", style="font-family: 'Hannotate SC',sans-serif";>
+	<div class="col-md-6">
+		<h1>管理者画面</h1>
+	</div>
+
+
+	<div class="col-md-6">
+		<h2 style="font-weight: bold;">本日の注文数:   <%= @range.count %>件</h2>
+	</div>
 </div>
+
