@@ -1,5 +1,18 @@
 <div class="row", style="font-family: 'Hannotate SC',sans-serif";>
 
+  <% if @customer.errors.any? %>
+  <div class="alert alert-danger" role="alert">
+    <h4 class="alert-heading"><%= pluralize(@customer.errors.count, "error") %></h4>
+    <p><%= pluralize(@customer.errors.count, "error") %> prohibited this object from being saved: not successfully</p>
+    <hr>
+    <p class="mb-0">
+      <% @customer.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+      <% end %>
+    </p>
+  </div>
+  <% end %>
+
   <div class="edit-title">
     <mark style="font-size: 20px;">
       <%= @customer.family_name %>

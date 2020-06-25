@@ -6,6 +6,10 @@ class Product < ApplicationRecord
 	#ここはカラム名にあわせてidいる？
 	attachment :image, destroy: false
 
+	validates :name, presence: true
+	validates :unit_price, presence: true
+	validates :description, presence: true
+
 	#def addTax(product.is_selling,rate)
 		#texed_money = (product.is_selling*rate).round
 	#end
