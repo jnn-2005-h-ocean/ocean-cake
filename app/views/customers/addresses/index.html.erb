@@ -1,5 +1,19 @@
 
 <div class="row", style="font-family: 'Hannotate SC',sans-serif;">
+
+	<% if @address.errors.any? %>
+	<div class="alert alert-danger" role="alert">
+		<h4 class="alert-heading"><%= pluralize(@address.errors.count, "error") %></h4>
+		<p><%= pluralize(@address.errors.count, "error") %> prohibited this object from being saved: not successfully</p>
+		<hr>
+		<p class="mb-0">
+			<% @address.errors.full_messages.each do |message| %>
+			<li><%= message %></li>
+			<% end %>
+		</p>
+	</div>
+	<% end %>
+
 	<p style="font-size:20pt;">配送先登録/一覧</p>
 
 	<%= form_for @address, url:  customers_customer_addresses_path(current_customer) do |f| %>

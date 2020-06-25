@@ -1,63 +1,77 @@
 
 
 <div class="row", style="font-family: 'Hannotate SC',sans-serif;">
+
+  <% if @customer.errors.any? %>
+  <div class="alert alert-danger" role="alert">
+    <h4 class="alert-heading"><%= pluralize(@customer.errors.count, "error") %></h4>
+    <p><%= pluralize(@customer.errors.count, "error") %> prohibited this object from being saved: not successfully</p>
+    <hr>
+    <p class="mb-0">
+      <% @customer.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+      <% end %>
+    </p>
+  </div>
+  <% end %>
+
   <div class="col-xs-10">
     <div class="edit-title">
       <mark style="font-size: 20px;">登録情報編集</mark>
     </div>
 
     <%= form_for @customer, url: customers_customer_path(current_customer) do |f| %>
-      <table class="margin-30">
-          <tr style="height:70px">
-            <th class="form">名前</th>
-            <td>（姓）</td>
-            <td><%= f.text_field :family_name, class: "form-control" %></td>
-            <td>（名）</td>
-            <td><%= f.text_field :first_name, class: "form-control" %></td>
-          </tr>
+    <table class="margin-30">
+      <tr style="height:70px">
+        <th class="form">名前</th>
+        <td>（姓）</td>
+        <td><%= f.text_field :family_name, class: "form-control" %></td>
+        <td>（名）</td>
+        <td><%= f.text_field :first_name, class: "form-control" %></td>
+      </tr>
 
-          <tr style="height:70px">
-            <th class="form">フリガナ</th>
-            <td>（セイ）</td>
-            <td><%= f.text_field :family_name_kana, class: "form-control" %></td>
-            <td>（メイ）</td>
-            <td><%= f.text_field :first_name_kana, class: "form-control" %></td>
-          </tr>
-
-
-        <tr style="height:70px">
-          <th class="form">メールアドレス</th>
-          <td></td>
-          <td><%= f.text_field :email, class: "form-control" %></td>
-        </tr> 
-
-        <tr style="height:70px">
-          <th class="form">郵便番号（ハイフンなし）</th>
-          <td></td>
-          <td><%= f.text_field :postal_code, class: "form-control" %></td>
-        </tr> 
-
-        <tr style="height:70px">
-          <th class="form">住所</th>
-          <td></td>
-          <td colspan="3"><%= f.text_field :address, class: "form-control" %></td>
-        </tr> 
+      <tr style="height:70px">
+        <th class="form">フリガナ</th>
+        <td>（セイ）</td>
+        <td><%= f.text_field :family_name_kana, class: "form-control" %></td>
+        <td>（メイ）</td>
+        <td><%= f.text_field :first_name_kana, class: "form-control" %></td>
+      </tr>
 
 
-        <tr style="height:70px">
-          <th class="form">電話番号（ハイフンなし）</th>
-          <td></td>
-          <td><%= f.text_field :telephone_number, class: "form-control" %></td>
-        </tr> 
+      <tr style="height:70px">
+        <th class="form">メールアドレス</th>
+        <td></td>
+        <td><%= f.text_field :email, class: "form-control" %></td>
+      </tr> 
 
-      </table>
-        <div class="button-box margin-30">
-          <%= f.submit '編集内容を保存する',class: 'btn btn-primary', style:"margin-right:130px" %>
+      <tr style="height:70px">
+        <th class="form">郵便番号（ハイフンなし）</th>
+        <td></td>
+        <td><%= f.text_field :postal_code, class: "form-control" %></td>
+      </tr> 
 
-          <%= link_to "退会する", delete_customers_customer_path(current_customer.id), class: 'btn btn-danger'%>
+      <tr style="height:70px">
+        <th class="form">住所</th>
+        <td></td>
+        <td colspan="3"><%= f.text_field :address, class: "form-control" %></td>
+      </tr> 
 
-        </div>
-        <%= link_to "戻る", :back %>
+
+      <tr style="height:70px">
+        <th class="form">電話番号（ハイフンなし）</th>
+        <td></td>
+        <td><%= f.text_field :telephone_number, class: "form-control" %></td>
+      </tr> 
+
+    </table>
+    <div class="button-box margin-30">
+      <%= f.submit '編集内容を保存する',class: 'btn btn-primary', style:"margin-right:130px" %>
+
+      <%= link_to "退会する", delete_customers_customer_path(current_customer.id), class: 'btn btn-danger'%>
+
+    </div>
+    <%= link_to "戻る", :back %>
     <% end %>
   </div>
 </div> 
