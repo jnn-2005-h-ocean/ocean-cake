@@ -7,7 +7,7 @@ class Admins::ProductsController < ApplicationController
 	def create
 		@product = Product.new(product_params)
 		if @product.save
-			redirect_to admins_products_path(@product.id), notice: "successfully created book!"
+			redirect_to admins_products_path(@product.id), notice: "successfully created product!"
 		else
   			render 'new'
   		end
@@ -28,7 +28,7 @@ class Admins::ProductsController < ApplicationController
 	def update
 		@product = Product.find(params[:id])
 		if @product.update(product_params)
-			redirect_to admins_product_path(@product.id), notice: "successfully updated product"
+			redirect_to admins_product_path(@product.id), notice: "successfully updated product!"
 		else
 			render action: :edit
 		end
