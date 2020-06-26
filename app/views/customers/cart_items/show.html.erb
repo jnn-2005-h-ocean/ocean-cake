@@ -7,9 +7,11 @@
         <mark style="font-size: 20px;">ショッピングカート</mark>
       </div>
 
+      <% if @cart_items.present? %>
       <div class="text-right">
-        		<%= link_to "カートを空にする", customers_customer_alldestroy_path, method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger" %>
+            <%= link_to "カートを空にする", customers_customer_alldestroy_path, method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger" %>
       </div><br>
+      <% end %>
 
     </div>
 
