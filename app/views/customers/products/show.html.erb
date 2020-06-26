@@ -8,11 +8,9 @@
 		<ul class="list-group">
 			<h2 style="font-family: 'Hannotate SC',sans-serif; text-align: center;">ジャンル検索</h2>
 			<% @genres.each do |genre| %>
-			<div style="text-align: center; font-family: 'Hannotate SC',sans-serif;">
-				<ul class="list-group">
-					<li class="list-group-item"><%= link_to genre.name,genre_search_customers_product_path(genre.id) %></li>
-				</ul>
-			</div>
+			<ul class="list-group", style="text-align: center;">
+				<%= link_to genre.name,genre_search_customers_product_path(genre.id), class: "btn btn-default btn-block" %>
+			</ul>
 			<% end %>
 		</ul>
 
@@ -38,27 +36,27 @@
 					<td>¥<%= @product.unit_price %></td>
 				</tr>
 
-		<% if customer_signed_in? %>
+				<% if customer_signed_in? %>
 				<tr>
 					<% if @product.is_selling == true %>
 					<td>
-					<%= form_for @cart_item,url: customers_customer_cart_items_path(current_customer.id), metod: :post do |f| %>
-					<%= f.hidden_field :product_id, value: @product.id %>
-        			<%= f.select :number, [1,2,3,4,5,6,7,8,9,10]%>
-        			<%= f.submit "カートに入れる", class: "btn btn-warning" %>
-        			<% end %>
-        			<% else %>
-        			<td><font color="red">売り切れ</font></td>
-        			<% end %>
-        			</td>
-        		</tr>
-        		<% else %>
+						<%= form_for @cart_item,url: customers_customer_cart_items_path(current_customer.id), metod: :post do |f| %>
+						<%= f.hidden_field :product_id, value: @product.id %>
+						<%= f.select :number, [1,2,3,4,5,6,7,8,9,10]%>
+						<%= f.submit "カートに入れる", class: "btn btn-warning" %>
+						<% end %>
+						<% else %>
+						<td><font color="red">売り切れ</font></td>
+						<% end %>
+					</td>
+				</tr>
+				<% else %>
 
-        		<tr>
-        			<td>新規会員登録は<%= link_to "こちら", new_customer_registration_path %>から</td>
-        		</tr>
+				<tr>
+					<td>新規会員登録は<%= link_to "こちら", new_customer_registration_path %>から</td>
+				</tr>
 
-        		<% end %>
+				<% end %>
 
 			</tbody>
 		</table>
