@@ -4,14 +4,11 @@
 	<div class="col-xs-3">
 		<h2 style="font-family: 'Hannotate SC',sans-serif; text-align: center;">ジャンル検索</h2>
 		<% @genres.each do |genre| %>
-		<div style="text-align: center; font-family: 'Hannotate SC',sans-serif;">
-			<ul class="list-group">
-				<li class="list-group-item"><%= link_to genre.name,genre_search_customers_product_path(genre.id) %></li>
-			</ul>
-		</div>
+		<ul class="list-group", style="text-align: center;">
+			<%= link_to genre.name,genre_search_customers_product_path(genre.id), class: "btn btn-default btn-block" %>
+		</ul>
 		<% end %>
 	</div>
-
 
 
 	<div class="col-xs-9">
@@ -21,21 +18,23 @@
 		<% i = 0 %>
 		<table class="nonborder">
 			<% @products.each do |product| %>
-				<td>
+			<td>
+				<div class="thumbnail">
 					<%= link_to customers_product_path(product.id) do %>
 					<%= attachment_image_tag product, :image, :fill, 200, 150 %>
-				<br>
-	        		<%= product.name %>
-	        	<br>
-	        		<p><%= product.unit_price %>円</p>
-	    			<% end %>
-	    		</td>
-	    		<!-- 4つ毎に改行 -->
-					<% i = i + 1 %>
-					<% if i % 4 == 0 %>
-						<tr></tr>
-					<% end %>
-	    	<% end %>
+					<br>
+					<%= product.name %>
+					<br>
+					<p><%= product.unit_price %>円</p>
+				</div>
+				<% end %>
+			</td>
+			<!-- 4つ毎に改行 -->
+			<% i = i + 1 %>
+			<% if i % 4 == 0 %>
+			<tr></tr>
+			<% end %>
+			<% end %>
 		</table>
-
 	</div>
+</div>

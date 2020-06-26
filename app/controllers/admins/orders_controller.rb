@@ -3,7 +3,7 @@ class Admins::OrdersController < ApplicationController
 	before_action :authenticate_admin!
 
 	def index
-		@orders = Order.all
+		@orders = Order.all.order("id DESC")#降順の設定もしています
 	end
 
 	def show
