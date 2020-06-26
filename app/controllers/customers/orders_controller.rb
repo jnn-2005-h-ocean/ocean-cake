@@ -25,6 +25,7 @@ flash[:notice] = "カートの中身がありません"
 
 		elsif params[:select_address] == "登録済み住所から選択"
 			if params[:page][:name] == ""
+				flash[:alert] = "住所が選択されていません"
 				redirect_to new_customers_customer_order_path
 			else
 				@shipping_address = Address.find(params[:page][:name])
@@ -34,11 +35,13 @@ flash[:notice] = "カートの中身がありません"
 			end
 
 		elsif params[:select_address] ==  "新しいお届け先"
+			@shipping_address = Address.new(shipping_address_params)
 
-			if params[:shipping_postal_code] == ""
+			if @shipping_address.shipping_postal_code == "" || @shipping_address.shipping_address == "" || @shipping_address.shipping_name == ""
+				flash[:alert] = "新しい届け先が入力されていません"
 				redirect_to new_customers_customer_order_path
 			else
-				@shipping_address = Address.new(shipping_address_params)
+
 				@shipping_address.customer_id = current_customer.id
 				@shipping_address.save
 				@order.shipping_postal_code = @shipping_address.shipping_postal_code
