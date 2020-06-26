@@ -15,25 +15,25 @@
 
 		<h3><%= @genre.name %>一覧</h3>
 
-		<% i = 0 %>
-		<table class="nonborder">
-			<% @products.each do |product| %>
-			<td>
-				<div class="thumbnail">
-					<%= link_to customers_product_path(product.id) do %>
-					<%= attachment_image_tag product, :image, :fill, 200, 150 %>
-					<br>
-					<%= product.name %>
-					<br>
-					<p><%= product.unit_price %>円</p>
-				</div>
+		<% @products.each do |product| %>
+
+		<div class="col-xs-3">
+			<div class="thumbnail">
+				<%= link_to customers_product_path(product.id) do %>
+				<%= attachment_image_tag product, :image, :fill, 200, 150 %>
 				<% end %>
-			</td>
-			<!-- 4つ毎に改行 -->
-			<% i = i + 1 %>
-			<% if i % 4 == 0 %>
-			<tr></tr>
-			<% end %>
+				<div class="caption">
+					<p><%= product.name %></p>
+					<p><%= product.unit_price %>円</p>
+					<% if product.is_selling == false %>
+							<font color="red">売り切れ</font>
+						<% else %>
+							<font color="green">&emsp;&emsp;&emsp;</font>
+					<% end %>
+				</div>
+			</div>
+		</div>
+
 			<% end %>
 		</table>
 	</div>
