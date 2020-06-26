@@ -1,5 +1,5 @@
 
-<div class="row">
+<div class="row", style="font-family: 'Hannotate SC',sans-serif;">
 
 	<strong><p style="font-size:20pt;">注文情報入力</p></strong>
 
@@ -9,7 +9,7 @@
 	<strong><p style="font-size:15pt;">支払方法</p></strong>
 
 	<div class= "form-group">
-		<%= f.radio_button :payment_method, :credit %>
+		<%= f.radio_button :payment_method, :credit, checked: true %>
 		<%= f.label :payment_method, "クレジットカード" %>
 	</div>
 
@@ -26,7 +26,7 @@
 	<!--ご自身の住所-->
 	<div class= "form-group">
 		<%= f.label "ご自身の住所" %><br>
-		<%= radio_button_tag( 'select_address' , 'ご自身の住所' ) %>
+		<%= radio_button_tag( 'select_address' , 'ご自身の住所', checked: true ) %>
 		<span>〒<%= current_customer.postal_code + current_customer.address + current_customer.family_name + current_customer.first_name %></span>
 	</div>
 
