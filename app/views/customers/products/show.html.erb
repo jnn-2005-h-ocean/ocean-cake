@@ -1,15 +1,4 @@
 
-<!-- -------------CSS-------------- -->
-
-<!-- .box3 {
-	height: 200px;
-	width: 200px;
-	border: 1px solid #000000;
-} -->
-
-<!-- -------------CSS-------------- -->
-
-
 
 <div class="row", style="font-family: 'Hannotate SC',sans-serif;">
 
@@ -49,19 +38,26 @@
 					<td>¥<%= @product.unit_price %></td>
 				</tr>
 
+		<% if customer_signed_in? %>
 				<tr>
+					<% if @product.is_selling == true %>
 					<td>
 					<%= form_for @cart_item,url: customers_customer_cart_items_path(current_customer.id), metod: :post do |f| %>
 					<%= f.hidden_field :product_id, value: @product.id %>
         			<%= f.select :number, [1,2,3,4,5,6,7,8,9,10]%>
         			<%= f.submit "カートに入れる", class: "btn btn-warning" %>
         			<% end %>
+        			<% else %>
+        			<td><font color="red">売り切れ</font></td>
+        			<% end %>
         			</td>
-				</tr>
+        		</tr>
+        		<% else %>
+        			<% redirect_to new_customer_session_path %>
+        		<% end %>
 
 			</tbody>
 		</table>
 	</div>
 
 </div>
-
