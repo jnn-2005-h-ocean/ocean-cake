@@ -10,7 +10,9 @@
 			<% @genres.each do |genre| %>
 			<div style="text-align: center; font-family: 'Hannotate SC',sans-serif;">
 				<ul class="list-group">
+					<% if genre.is_active == true %>
 					<li class="list-group-item"><%= link_to genre.name,genre_search_customers_product_path(genre.id) %></li>
+					<% end %>
 				</ul>
 			</div>
 			<% end %>
@@ -35,7 +37,7 @@
 				</tr>
 
 				<tr style="font-size:15pt">
-					<td>¥<%= @product.unit_price %></td>
+					<td>¥<%= (@product.unit_price * 1.1).round(0)%></td>
 				</tr>
 
 		<% if customer_signed_in? %>
