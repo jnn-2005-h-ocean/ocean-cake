@@ -6,6 +6,7 @@ class Product < ApplicationRecord
 	#ここはカラム名にあわせてidいる？
 	attachment :image, destroy: false
 
+
 	validates :image, presence: true
 	validates :name, presence: true
 	validates :unit_price, presence: true
