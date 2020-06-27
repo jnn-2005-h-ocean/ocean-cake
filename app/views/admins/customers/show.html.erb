@@ -13,14 +13,12 @@
       <tr>
         <th>顧客ID</th>
         <td>
-          <%= @customer.id %>
-          <div class="status">
+          <%= @customer.id %><span>　　</span>
             <% if @customer.is_withdrawal == false %>
-              <p>有効会員</p>
+              <span class="status">有効会員</span>
             <% else %>
-              <p>退会済会員</p>
+              <span class="status">退会済会員</span>
             <% end %>
-          </div>
         </td>
       </tr>
       <tr>
