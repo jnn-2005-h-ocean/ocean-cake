@@ -1,6 +1,5 @@
 
-
-<div class="row", style="font-family: 'Hannotate SC',sans-serif;">
+	<div class="row", style="font-family: 'Hannotate SC',sans-serif;">
 
 	<P class = "message"><%= flash[:update] %></P>
 
@@ -35,17 +34,22 @@
               		<td>注文ステータス</td>
 		  			<td>
 		  				<%= f.select :order_status, Order.order_statuses.keys.to_a %>
+		  				<!-- <%= @order.order_status %>
+		  				<%= @order.order_status_before_type_cast %> -->
 		  			</td>
 
 					<td><%= f.submit '更新', class: "btn btn-primary" %></td>
+
               	</tr>
+
 
             </tbody>
 		</table>
 		<% end %>
-</div>
+	</div>
 
 	<div  class="row" style="position: relative;">
+
 		<table class="table col-md-8">
 
 			<thead style="background-color:#e0e0e0">
@@ -59,29 +63,42 @@
 				</tr>
 			</thead>
 
+
+			<% @order_items.each do |order_item| %>
+
+
 			<tbody>
 				<tr>
-					<% @order_items.each do |order_item| %>
-					<%= form_for order_item, url: admins_order_item_path(order_item) do |f| %>
 					<td><%= order_item.product.name %></td>
+
 					<% @unit_price = (order_item.product.unit_price * 1.1).floor%>
          			<td><%= @unit_price.to_s(:delimited)%>円</td>
+
 					<td><%= order_item.number %></td>
+
 					<% @subtotal = (@unit_price * order_item.number).floor %>
               		<td><%= @subtotal.to_s(:delimited) %>円</td>
 
               		<!-- selectで選んだenumをform_forで送信する -->
 		  			<td>
+		  				<%= form_for order_item, url: admins_order_item_path(order_item) do |f| %>
 		  				<%= f.select :making_status, OrderItem.making_statuses.keys.to_a %>
 		  			</td>
 
-					<td><%= f.submit '更新', class: "btn btn-primary" %></td>
+		  				<!-- <%= order_item.making_status %>
+		  				<%= order_item.making_status_before_type_cast %> -->
+		  			<td><%= f.submit '更新', class: "btn btn-primary" %></td>
+
+		  			<% end %>
+
 				</tr>
-				<% end %>
+
 
 			</tbody>
-			<% end %>
+
+		<% end %>
+
+
 		</table>
 
-
-</div>
+	</div>
