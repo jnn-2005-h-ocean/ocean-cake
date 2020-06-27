@@ -8,7 +8,7 @@ class Admins::ProductsController < ApplicationController
 	def create
 		@product = Product.new(product_params)
 		if @product.save
-			redirect_to admins_products_path(@product.id), notice: "successfully created product!"
+			redirect_to admins_product_path(@product.id), notice: "successfully created product!"
 		else
   			render 'new'
   		end
