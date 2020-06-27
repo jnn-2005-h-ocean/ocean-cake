@@ -1,5 +1,6 @@
 class Customers::OrdersController < ApplicationController
 	layout 'customers'
+  before_action :authenticate_customer!
 	def new #注文情報入力画面
 		@customer = Customer.find(params[:customer_id])
 		if @customer.cart_items.blank?

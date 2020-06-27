@@ -1,5 +1,6 @@
 class Customers::CartItemsController < ApplicationController
 	layout 'customers'
+  before_action :authenticate_customer!
 	def show
 		@customer = current_customer #本人の買い物商品のみ表示させる
 		@cart_items = current_customer.cart_items #cartはログインのカスタマーだという定義
