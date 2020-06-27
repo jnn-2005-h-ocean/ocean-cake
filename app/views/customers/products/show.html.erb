@@ -35,7 +35,7 @@
 				</tr>
 
 				<tr style="font-size:15pt">
-					<td>¥<%= @product.unit_price %></td>
+					<td>¥<%= (@product.unit_price * 1.1).round(0) %></td>
 				</tr>
 
 		<% if customer_signed_in? %>
