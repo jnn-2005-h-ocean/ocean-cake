@@ -1,10 +1,10 @@
 
 <div class="row", style="font-family: 'Hannotate SC',sans-serif;">
 
+<%= form_for @product, url: admins_product_path do |f| %>
 
   <h2>商品編集</h2>
   <div class="col-xs-4">
-    <%= form_for @product, url: admins_product_path do |f| %>
     <%= attachment_image_tag @product, :image, :fill, 300, 200 %>
     <%= f.attachment_field :image %>
   </div>
@@ -43,6 +43,8 @@
      </div>
    </div>
 
-   <% end %>
+
 
  </div>
+
+<% end %>

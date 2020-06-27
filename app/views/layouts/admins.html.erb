@@ -29,11 +29,16 @@
         <ul class="nav navbar-nav navbar-right">
           <!--if文でサインインとアウト時の表示を変更-->
           <% if admin_signed_in? %>
-          <li style="font-family: 'Hannotate SC',sans-serif;"><%= link_to "商品一覧", admins_products_path%></li>
-          <li style="font-family: 'Hannotate SC',sans-serif;"><%= link_to "会員一覧", admins_customers_path%></li>
-          <li style="font-family: 'Hannotate SC',sans-serif;"><%= link_to "注文履歴一覧", admins_orders_path%></li>
-          <li style="font-family: 'Hannotate SC',sans-serif;"><%= link_to "ジャンル一覧", admins_genres_path%></li>
-          <li style="font-family: 'Hannotate SC',sans-serif;"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
+          <li style="font-family: 'Hannotate SC',sans-serif;"><%= link_to "商品一覧", admins_products_path, class: 'up'%></li>
+          <li style="font-family: 'Hannotate SC',sans-serif;"><%= link_to "会員一覧", admins_customers_path, class: 'up'%></li>
+          <li style="font-family: 'Hannotate SC',sans-serif;"><%= link_to "注文履歴一覧", admins_orders_path, class: 'up'%></li>
+          <li style="font-family: 'Hannotate SC',sans-serif;"><%= link_to "ジャンル一覧", admins_genres_path, class: 'up'%></li>
+          <li style="font-family: 'Hannotate SC',sans-serif;"><%= link_to "ログアウト", destroy_admin_session_path, class: 'up', method: :delete %>
+          </li>
+
+          <div class="text-right">
+           <input type="search" name="search" placeholder="キーワードを入力">
+          </div>
 
           <% else %>
 
