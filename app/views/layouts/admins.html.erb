@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>ocean_cake_admin</title>
+  <title>Admin_Nagano_Cake</title>
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
 
@@ -17,8 +17,14 @@
     <div class="container">
 
       <nav class="nav navbar-nav navbar-left">
-        <span style="font-family: cursive; font-size: 35px;"><%= link_to 'Nagano-cake',admins_root_path %></span>
+        <span style="font-family: cursive; font-size: 35px;">
+          <% if admin_signed_in? %>
+            <%= link_to 'Nagano-cake',admins_root_path %></span>
+          <% else %>
+            Nagano-cake
+          <% end %>
       </nav>
+
       <nav>
         <ul class="nav navbar-nav navbar-right">
           <!--if文でサインインとアウト時の表示を変更-->
@@ -31,7 +37,7 @@
 
           <% else %>
 
-          <li style="font-family: 'Hannotate SC',sans-serif;"><%= link_to "商品一覧", admins_products_path%></li>
+
           <li style="font-family: 'Hannotate SC',sans-serif;"><%= link_to "ログイン", new_admin_session_path%></li>
 
           <% end %>
