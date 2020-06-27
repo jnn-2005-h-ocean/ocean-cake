@@ -4,7 +4,9 @@
 		<h3 style="font-family: 'Hannotate SC',sans-serif; text-align: center;">ジャンル検索</h3>
 		<% @genres.each do |genre| %>
 		<ul class="list-group", style="text-align: center;">
+			<% if genre.is_active == true %>
 			<%= link_to genre.name,genre_search_customers_product_path(genre.id), class: "btn btn-default btn-block" %>
+			<% end %>
 		</ul>
 		<% end %>
 	</div>
@@ -20,7 +22,7 @@
 					<% end %>
 					<div class="caption">
 						<p><%= product.name %></p>
-						<p><%= product.unit_price %>円</p>
+						<p><%= (product.unit_price * 1.1).round(0)%>円</p>
 						<% if product.is_selling == false %>
 							<font color="red">売り切れ</font>
 						<% else %>
