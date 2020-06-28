@@ -1,9 +1,9 @@
-
+<div class="row", style="font-family: 'Hannotate SC',sans-serif";>
 
 <!-- ここは管理者側のトップページです -->
+<div class="row">
 
 
-<div class="row", style="font-family: 'Hannotate SC',sans-serif";>
 	<div class="col-md-6">
 		<h1>管理者画面</h1>
 	</div>
@@ -12,5 +12,72 @@
 	<div class="col-md-6">
 		<h2 style="font-weight: bold;">本日の注文数:   <%= @range.count %>件</h2>
 	</div>
+
 </div>
+
+<div class="row">
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+</div>
+
+
+
+<div class="row">
+	<div class="col-md-6">
+		<h2 style="font-weight: bold;">入金待ち:   <%= @orange0.count %>件</h2>
+	</div>
+
+	<div class="col-md-6">
+		<h2 style="font-weight: bold;">着手不可:   <%= @range0.count %>件</h2>
+	</div>
+</div>
+
+<!--  -->
+
+<div class="row">
+	<div class="col-md-6">
+		<h2 style="font-weight: bold;">入金確認:   <%= @orange1.count %>件</h2>
+	</div>
+
+	<div class="col-md-6">
+		<h2 style="font-weight: bold;">制作待ち:   <%= @range1.count %>件</h2>
+	</div>
+</div>
+
+<!--  -->
+
+<div class="row">
+	<div class="col-md-6">
+		<h2 style="font-weight: bold;">製作中:   <%= @orange2.count %>件</h2>
+	</div>
+
+	<div class="col-md-6">
+		<h2 style="font-weight: bold;">製作中:   <%= @range2.count %>件</h2>
+	</div>
+</div>
+
+<!--  -->
+
+<div class="row">
+	<div class="col-md-6">
+		<h2 style="font-weight: bold;">発送準備中:   <%= @orange3.count %>件</h2>
+	</div>
+
+	<div class="col-md-6">
+		<h2 style="font-weight: bold;">制作完了:   <%= @range3.count %>件</h2>
+	</div>
+</div>
+
+<!--  -->
+
+<div class="row">
+	<div class="col-md-6">
+		<h2 style="font-weight: bold;">発送済:   <%= @orange4.count %>件</h2>
+	</div>
+	<div class="col-md-6"></div>
+</div>
+
+
+
+</div>
+
 
