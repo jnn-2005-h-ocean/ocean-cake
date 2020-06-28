@@ -15,6 +15,7 @@ class Admins::OrderItemsController < ApplicationController
 		if @order_item.making_status == "制作完了"
 			@order.update(order_status: 3)
 		end
+
 		redirect_to admins_order_path(@order.id)
 
 	end
